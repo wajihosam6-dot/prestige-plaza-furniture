@@ -10,6 +10,11 @@ import TestimonialsSection from '@/components/TestimonialsSection';
 import PortfolioSection from '@/components/PortfolioSection';
 import TeamSection from '@/components/TeamSection';
 import DividerSection from '@/components/DividerSection';
+import ProductCarousel3D from '@/components/ProductCarousel3D';
+import InteractiveProductGrid from '@/components/InteractiveProductGrid';
+import MasonryProductGallery from '@/components/MasonryProductGallery';
+import AdvancedProductSlider from '@/components/AdvancedProductSlider';
+import FlipCardProducts from '@/components/FlipCardProducts';
 import CTASection from '@/components/CTASection';
 import NewsletterSection from '@/components/NewsletterSection';
 import { Phone, MapPin } from '@phosphor-icons/react';
@@ -73,6 +78,21 @@ export default function Home() {
 
       {/* Gallery Section */}
       <GallerySection />
+
+      {/* 3D Carousel Section */}
+      <ProductCarousel3D />
+
+      {/* Interactive Grid Section */}
+      <InteractiveProductGrid />
+
+      {/* Masonry Gallery Section */}
+      <MasonryProductGallery />
+
+      {/* Advanced Slider Section */}
+      <AdvancedProductSlider />
+
+      {/* Flip Cards Section */}
+      <FlipCardProducts />
 
       {/* Features Section */}
       <FeaturesSection />

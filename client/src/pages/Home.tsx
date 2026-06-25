@@ -1,68 +1,28 @@
-import { motion } from 'motion/react';
-import { useScroll, useTransform } from 'motion/react';
+import { motion, useScroll, useTransform } from 'motion/react';
 import { useRef } from 'react';
 import Header from '@/components/Header';
+import HeroSection from '@/components/HeroSection';
 import GallerySection from '@/components/GallerySection';
+import FeaturesSection from '@/components/FeaturesSection';
+import ProcessSection from '@/components/ProcessSection';
+import StatsSection from '@/components/StatsSection';
+import TestimonialsSection from '@/components/TestimonialsSection';
+import PortfolioSection from '@/components/PortfolioSection';
+import TeamSection from '@/components/TeamSection';
+import DividerSection from '@/components/DividerSection';
 import CTASection from '@/components/CTASection';
-import { ArrowDown, Phone, MapPin } from '@phosphor-icons/react';
+import NewsletterSection from '@/components/NewsletterSection';
+import { Phone, MapPin } from '@phosphor-icons/react';
 
 export default function Home() {
   const containerRef = useRef(null);
-  const { scrollY } = useScroll();
-  const heroOpacity = useTransform(scrollY, [0, 300], [1, 0]);
-  const heroScale = useTransform(scrollY, [0, 300], [1, 0.95]);
 
   return (
     <div className="min-h-screen bg-white overflow-hidden" ref={containerRef}>
       <Header />
 
       {/* Hero Section */}
-      <motion.section
-        className="relative h-screen flex items-center justify-center overflow-hidden pt-20"
-        style={{ opacity: heroOpacity, scale: heroScale }}
-      >
-        <div
-          className="absolute inset-0 z-0"
-          style={{
-            backgroundImage: 'url(/manus-storage/hero_furniture_showcase_eaa79e5a.png)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-          }}
-        >
-          <div className="absolute inset-0 bg-black/30" />
-        </div>
-
-        <div className="relative z-10 container mx-auto px-4 text-center text-white">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            <h1 className="text-6xl md:text-7xl font-bold mb-6" style={{ fontFamily: 'Playfair Display' }}>
-              Prestige Plaza
-            </h1>
-            <p className="text-xl md:text-2xl mb-8 font-light">
-              Discover Luxury Furniture for Your Home
-            </p>
-            <motion.button
-              className="px-8 py-3 bg-amber-600 text-white font-semibold rounded-sm hover:bg-amber-700 transition-all"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Explore Collection
-            </motion.button>
-          </motion.div>
-        </div>
-
-        {/* Scroll Indicator */}
-        <motion.div
-          className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10"
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-        >
-          <ArrowDown size={32} weight="bold" className="text-white" />
-        </motion.div>
-      </motion.section>
+      <HeroSection />
 
       {/* Featured Products Section */}
       <section className="py-20 bg-gradient-to-b from-white to-gray-50">
@@ -114,6 +74,30 @@ export default function Home() {
       {/* Gallery Section */}
       <GallerySection />
 
+      {/* Features Section */}
+      <FeaturesSection />
+
+      {/* Process Section */}
+      <ProcessSection />
+
+      {/* Stats Section */}
+      <StatsSection />
+
+      {/* Testimonials Section */}
+      <TestimonialsSection />
+
+      {/* Divider */}
+      <DividerSection />
+
+      {/* Portfolio Section */}
+      <PortfolioSection />
+
+      {/* Divider */}
+      <DividerSection />
+
+      {/* Team Section */}
+      <TeamSection />
+
       {/* About Section */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
@@ -157,6 +141,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Newsletter Section */}
+      <NewsletterSection />
 
       {/* CTA Section */}
       <CTASection />

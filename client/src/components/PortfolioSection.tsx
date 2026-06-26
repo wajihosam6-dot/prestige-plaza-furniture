@@ -48,6 +48,18 @@ export default function PortfolioSection() {
     offset: ['start end', 'end start'],
   });
 
+  const opacityA = useTransform(scrollYProgress, [0, 0.3, 0.6], [1, 0.8, 0.3]);
+  const scaleA = useTransform(scrollYProgress, [0, 0.3, 0.6], [1, 0.95, 0.85]);
+  const blurA = useTransform(scrollYProgress, [0, 0.3, 0.6], ['blur(0px)', 'blur(1px)', 'blur(3px)']);
+
+  const opacityB = useTransform(scrollYProgress, [0.15, 0.4, 0.7, 1], [0.3, 0.8, 1, 0.5]);
+  const scaleB = useTransform(scrollYProgress, [0.15, 0.4, 0.7, 1], [0.85, 0.95, 1, 0.9]);
+  const blurB = useTransform(scrollYProgress, [0.15, 0.4, 0.7, 1], ['blur(3px)', 'blur(1px)', 'blur(0px)', 'blur(2px)']);
+
+  const opacityC = useTransform(scrollYProgress, [0.5, 0.75, 1], [0.2, 0.6, 1]);
+  const scaleC = useTransform(scrollYProgress, [0.5, 0.75, 1], [0.8, 0.9, 1]);
+  const blurC = useTransform(scrollYProgress, [0.5, 0.75, 1], ['blur(4px)', 'blur(2px)', 'blur(0px)']);
+
   return (
     <section ref={containerRef} className="py-20 bg-white relative overflow-hidden">
       {/* Background Decoration */}
@@ -82,45 +94,53 @@ export default function PortfolioSection() {
 
         {/* Portfolio Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 md:gap-6">
-          {portfolioItems.map((item, index) => (
-            <motion.div
-              key={item.id}
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: index * 0.08 }}
-              viewport={{ once: true }}
-              className="group relative overflow-hidden rounded-lg h-48 md:h-64 cursor-pointer"
-            >
-              {/* Image */}
-              <img
-                src={item.image}
-                alt={item.title}
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-              />
+          {portfolioItems.map((item, index) => {
+            let op: typeof opacityA, sc: typeof scaleA, bl: typeof blurA;
+            if (index < 2) { op = opacityA; sc = scaleA; bl = blurA; }
+            else if (index < 4) { op = opacityB; sc = scaleB; bl = blurB; }
+            else { op = opacityC; sc = scaleC; bl = blurC; }
 
-              {/* Overlay */}
+            return (
               <motion.div
-                className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex flex-col justify-end p-4 md:p-6"
-                initial={{ opacity: 0 }}
-                whileHover={{ opacity: 1 }}
-                transition={{ duration: 0.3 }}
+                key={item.id}
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: index * 0.08 }}
+                viewport={{ once: true }}
+                style={{ opacity: op, scale: sc, filter: bl }}
+                className="group relative overflow-hidden rounded-lg h-48 md:h-64 cursor-pointer"
               >
-                <h3
-                  className="text-lg md:text-xl font-bold text-white mb-2"
-                  style={{ fontFamily: 'Playfair Display' }}
-                >
-                  {item.title}
-                </h3>
-                <p className="text-yellow-600 text-xs md:text-sm font-semibold">{item.category}</p>
-              </motion.div>
+                {/* Image */}
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                />
 
-              {/* Border Animation */}
-              <motion.div
-                className="absolute inset-0 border-2 border-yellow-600 rounded-lg opacity-0 group-hover:opacity-100"
-                transition={{ duration: 0.3 }}
-              />
-            </motion.div>
-          ))}
+                {/* Overlay */}
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex flex-col justify-end p-4 md:p-6"
+                  initial={{ opacity: 0 }}
+                  whileHover={{ opacity: 1 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <h3
+                    className="text-lg md:text-xl font-bold text-white mb-2"
+                    style={{ fontFamily: 'Playfair Display' }}
+                  >
+                    {item.title}
+                  </h3>
+                  <p className="text-yellow-600 text-xs md:text-sm font-semibold">{item.category}</p>
+                </motion.div>
+
+                {/* Border Animation */}
+                <motion.div
+                  className="absolute inset-0 border-2 border-yellow-600 rounded-lg opacity-0 group-hover:opacity-100"
+                  transition={{ duration: 0.3 }}
+                />
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>

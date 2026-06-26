@@ -16,6 +16,7 @@ import InteractiveProductGrid from '@/components/InteractiveProductGrid';
 import MasonryProductGallery from '@/components/MasonryProductGallery';
 import AdvancedProductSlider from '@/components/AdvancedProductSlider';
 import FlipCardProducts from '@/components/FlipCardProducts';
+import MapSection from '@/components/MapSection';
 import CTASection from '@/components/CTASection';
 import NewsletterSection from '@/components/NewsletterSection';
 import { Phone, MapPin } from '@phosphor-icons/react';
@@ -124,6 +125,9 @@ export default function Home() {
 
       {/* CTA Section */}
       <CTASection />
+
+      {/* Map Section */}
+      <MapSection />
 
       {/* Contact Section */}
       <section className="py-20 bg-gray-900 text-white">

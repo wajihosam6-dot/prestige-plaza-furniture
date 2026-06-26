@@ -44,7 +44,7 @@ const portfolioItems: Portfolio[] = [
 export default function PortfolioSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const [desktopPhase, setDesktopPhase] = useState(0);
+  const [desktopFocus, setDesktopFocus] = useState(0);
   const [mobileActive, setMobileActive] = useState(0);
 
   const { scrollYProgress } = useScroll({
@@ -54,9 +54,8 @@ export default function PortfolioSection() {
 
   useMotionValueEvent(scrollYProgress, 'change', (latest) => {
     if (typeof window === 'undefined' || window.innerWidth < 1024) return;
-    if (latest < 0.35) setDesktopPhase(0);
-    else if (latest < 0.65) setDesktopPhase(1);
-    else setDesktopPhase(2);
+    const phase = Math.min(4, Math.floor(latest * 5));
+    setDesktopFocus(phase);
   });
 
   const { scrollY } = useScroll();
@@ -81,16 +80,19 @@ export default function PortfolioSection() {
 
   const isActive = (index: number) => {
     const desktop = typeof window !== 'undefined' && window.innerWidth >= 1024;
-    if (desktop) {
-      if (desktopPhase === 0) return index < 2;
-      if (desktopPhase === 1) return index >= 2 && index < 4;
-      return index >= 4;
-    }
-    return mobileActive === index;
+    return desktop ? desktopFocus === index : mobileActive === index;
   };
 
   return (
-    <section ref={sectionRef} className="relative bg-white min-h-screen lg:min-h-[300vh]">
+    <section ref={sectionRef} className="relative bg-white min-h-screen lg:min-h-[500vh]">
+      <div className="absolute inset-0 opacity-5 pointer-events-none">
+        <motion.div
+          className="absolute top-0 right-0 w-96 h-96 bg-yellow-600 rounded-full blur-3xl"
+          animate={{ x: [0, 50, 0], y: [0, 30, 0] }}
+          transition={{ duration: 12, repeat: Infinity }}
+        />
+      </div>
+
       <div className="relative z-10 py-20 lg:py-0 lg:sticky lg:top-0 lg:h-screen lg:flex lg:items-center lg:overflow-hidden">
         <div className="container mx-auto px-4 w-full">
           <motion.div
@@ -115,11 +117,10 @@ export default function PortfolioSection() {
                 key={item.id}
                 ref={(el) => { cardRefs.current[index] = el; }}
                 animate={{
-                  opacity: isActive(index) ? 1 : 0.25,
-                  scale: isActive(index) ? 1 : 0.92,
-                  filter: isActive(index) ? 'blur(0px)' : 'blur(4px)',
+                  opacity: isActive(index) ? 1 : 0.7,
+                  scale: isActive(index) ? 1 : 0.95,
                 }}
-                transition={{ duration: 0.6, ease: 'easeInOut' }}
+                transition={{ duration: 0.5, ease: 'easeInOut' }}
                 className="group relative overflow-hidden rounded-lg h-48 md:h-64 cursor-pointer"
               >
                 <img

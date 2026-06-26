@@ -30,7 +30,7 @@ export default function Header() {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
     >
-      <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+      <div className="container mx-auto px-4 py-0.5 flex items-center justify-between">
         <motion.div
           className="flex items-center gap-2"
           whileHover={{ scale: 1.05 }}

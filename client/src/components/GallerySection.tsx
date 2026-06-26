@@ -48,7 +48,8 @@ export default function GallerySection() {
     offset: ['start end', 'end start'],
   });
 
-  const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
+  const yUp = useTransform(scrollYProgress, [0, 1], [100, -100]);
+  const yDown = useTransform(scrollYProgress, [0, 1], [-100, 100]);
 
   return (
     <section ref={containerRef} className="py-20 bg-gradient-to-b from-neutral-50 to-white overflow-hidden">
@@ -74,7 +75,7 @@ export default function GallerySection() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
-              style={index % 2 === 0 ? { y } : { y: useTransform(scrollYProgress, [0, 1], [-100, 100]) }}
+              style={{ y: index % 2 === 0 ? yUp : yDown }}
               className="group cursor-pointer"
             >
               <div className="relative overflow-hidden rounded-lg h-80 mb-4 shadow-lg">

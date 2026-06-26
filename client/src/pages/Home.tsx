@@ -186,9 +186,22 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-black text-neutral-400 py-8 border-t border-neutral-800">
+      <footer className="bg-black text-neutral-400 py-12 border-t border-neutral-800">
         <div className="container mx-auto px-4 text-center">
-          <p>&copy; 2026 Prestige Plaza. All rights reserved.</p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="mb-6"
+          >
+            <img
+              src="/images/prestige_plaza_logo_real_0ced4f3f.png"
+              alt="Prestige Plaza"
+              className="w-24 h-24 mx-auto object-contain opacity-80 hover:opacity-100 transition-opacity"
+            />
+          </motion.div>
+          <p className="text-sm">&copy; 2026 Prestige Plaza. All rights reserved.</p>
         </div>
       </footer>
     </div>

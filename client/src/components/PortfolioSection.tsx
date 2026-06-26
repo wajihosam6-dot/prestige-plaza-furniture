@@ -1,5 +1,5 @@
 import { motion, useScroll, useMotionValueEvent } from 'motion/react';
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 
 interface Portfolio {
   id: number;
@@ -44,19 +44,12 @@ const portfolioItems: Portfolio[] = [
 export default function PortfolioSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const [desktopFocus, setDesktopFocus] = useState(0);
+  const [focusIndex, setFocusIndex] = useState(0);
   const [mobileActive, setMobileActive] = useState(0);
-
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ['start end', 'end start'],
-  });
-
-  useMotionValueEvent(scrollYProgress, 'change', (latest) => {
-    if (typeof window === 'undefined' || window.innerWidth < 1024) return;
-    const phase = Math.min(4, Math.floor(latest * 5));
-    setDesktopFocus(phase);
-  });
+  const focusIndexRef = useRef(0);
+  const touchStartY = useRef(0);
+  const lastAdvance = useRef(0);
+  const DEBOUNCE_MS = 500;
 
   const { scrollY } = useScroll();
 
@@ -78,13 +71,100 @@ export default function PortfolioSection() {
     setMobileActive(closestIdx);
   });
 
+  useEffect(() => {
+    focusIndexRef.current = focusIndex;
+  }, [focusIndex]);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const handleWheel = (e: WheelEvent) => {
+      if (window.innerWidth < 1024) return;
+      const rect = section.getBoundingClientRect();
+      if (rect.top > 1) return;
+      if (rect.bottom <= 0) return;
+
+      const idx = focusIndexRef.current;
+      const now = Date.now();
+
+      if (e.deltaY > 0 && idx < 4) {
+        e.preventDefault();
+        if (now - lastAdvance.current >= DEBOUNCE_MS) {
+          lastAdvance.current = now;
+          setFocusIndex((p) => Math.min(4, p + 1));
+        }
+      } else if (e.deltaY < 0 && idx > 0) {
+        e.preventDefault();
+        if (now - lastAdvance.current >= DEBOUNCE_MS) {
+          lastAdvance.current = now;
+          setFocusIndex((p) => Math.max(0, p - 1));
+        }
+      }
+    };
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (window.innerWidth < 1024) return;
+      const rect = section.getBoundingClientRect();
+      if (rect.top > 1) return;
+
+      const isDown = e.key === 'ArrowDown' || e.key === 'PageDown' || e.key === ' ';
+      const isUp = e.key === 'ArrowUp' || e.key === 'PageUp';
+      if (!isDown && !isUp) return;
+
+      const idx = focusIndexRef.current;
+      if (isDown && idx < 4) {
+        e.preventDefault();
+        setFocusIndex((p) => Math.min(4, p + 1));
+      } else if (isUp && idx > 0) {
+        e.preventDefault();
+        setFocusIndex((p) => Math.max(0, p - 1));
+      }
+    };
+
+    const handleTouchStart = (e: TouchEvent) => {
+      if (window.innerWidth < 1024) return;
+      const rect = section.getBoundingClientRect();
+      if (rect.top > 1 || rect.bottom <= 0) return;
+      touchStartY.current = e.touches[0].clientY;
+    };
+
+    const handleTouchEnd = (e: TouchEvent) => {
+      if (window.innerWidth < 1024) return;
+      const rect = section.getBoundingClientRect();
+      if (rect.top > 1 || rect.bottom <= 0) return;
+
+      const deltaY = touchStartY.current - e.changedTouches[0].clientY;
+      if (Math.abs(deltaY) < 30) return;
+
+      const idx = focusIndexRef.current;
+      if (deltaY > 0 && idx < 4) {
+        setFocusIndex((p) => Math.min(4, p + 1));
+      } else if (deltaY < 0 && idx > 0) {
+        setFocusIndex((p) => Math.max(0, p - 1));
+      }
+    };
+
+    section.addEventListener('wheel', handleWheel, { passive: false });
+    window.addEventListener('keydown', handleKeyDown);
+    section.addEventListener('touchstart', handleTouchStart, { passive: true });
+    section.addEventListener('touchend', handleTouchEnd, { passive: true });
+
+    return () => {
+      section.removeEventListener('wheel', handleWheel);
+      window.removeEventListener('keydown', handleKeyDown);
+      section.removeEventListener('touchstart', handleTouchStart);
+      section.removeEventListener('touchend', handleTouchEnd);
+    };
+  }, []);
+
   const isActive = (index: number) => {
     const desktop = typeof window !== 'undefined' && window.innerWidth >= 1024;
-    return desktop ? desktopFocus === index : mobileActive === index;
+    return desktop ? focusIndex === index : mobileActive === index;
   };
 
   return (
-    <section ref={sectionRef} className="relative bg-white min-h-screen lg:min-h-[500vh]">
+    <section ref={sectionRef} className="relative bg-white min-h-screen lg:h-screen lg:overflow-hidden">
       <div className="absolute inset-0 opacity-5 pointer-events-none">
         <motion.div
           className="absolute top-0 right-0 w-96 h-96 bg-yellow-600 rounded-full blur-3xl"
@@ -93,7 +173,7 @@ export default function PortfolioSection() {
         />
       </div>
 
-      <div className="relative z-10 py-20 lg:py-0 lg:sticky lg:top-0 lg:h-screen lg:flex lg:items-center lg:overflow-hidden">
+      <div className="relative z-10 py-20 lg:py-0 lg:h-full lg:flex lg:items-center lg:overflow-hidden">
         <div className="container mx-auto px-4 w-full">
           <motion.div
             initial={{ opacity: 0, y: 30 }}

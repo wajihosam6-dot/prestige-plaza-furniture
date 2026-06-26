@@ -1,5 +1,5 @@
-import { motion, useScroll, useTransform } from 'motion/react';
-import { useRef } from 'react';
+import { motion, useScroll, useInView } from 'motion/react';
+import { useRef, useState, useEffect } from 'react';
 
 interface Portfolio {
   id: number;
@@ -41,28 +41,89 @@ const portfolioItems: Portfolio[] = [
   },
 ];
 
+function Card({ item, index, isActive, onInView }: { item: Portfolio; index: number; isActive: boolean; onInView: (i: number) => void }) {
+  const cardRef = useRef(null);
+  const inView = useInView(cardRef, { amount: 0.4 });
+
+  useEffect(() => {
+    if (inView && window.innerWidth < 1024) onInView(index);
+  }, [inView, index, onInView]);
+
+  return (
+    <motion.div
+      ref={cardRef}
+      initial={{ opacity: 0, scale: 0.8 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.6, delay: index * 0.08 }}
+      viewport={{ once: true }}
+      animate={{
+        opacity: isActive ? 1 : 0.25,
+        scale: isActive ? 1 : 0.92,
+        filter: isActive ? 'blur(0px)' : 'blur(4px)',
+      }}
+      transition={{ duration: 0.6, ease: 'easeInOut' }}
+      className="group relative overflow-hidden rounded-lg h-48 md:h-64 cursor-pointer"
+    >
+      <img
+        src={item.image}
+        alt={item.title}
+        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+      />
+      <motion.div
+        className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex flex-col justify-end p-4 md:p-6"
+        initial={{ opacity: 0 }}
+        whileHover={{ opacity: 1 }}
+        transition={{ duration: 0.3 }}
+      >
+        <h3
+          className="text-lg md:text-xl font-bold text-white mb-2"
+          style={{ fontFamily: 'Playfair Display' }}
+        >
+          {item.title}
+        </h3>
+        <p className="text-yellow-600 text-xs md:text-sm font-semibold">{item.category}</p>
+      </motion.div>
+      <motion.div
+        className="absolute inset-0 border-2 border-yellow-600 rounded-lg opacity-0 group-hover:opacity-100"
+        transition={{ duration: 0.3 }}
+      />
+    </motion.div>
+  );
+}
+
 export default function PortfolioSection() {
   const containerRef = useRef(null);
+  const [mobileFocus, setMobileFocus] = useState(0);
+  const [desktopFocus, setDesktopFocus] = useState(0);
+  const scrollRef = useRef(0);
+
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ['start end', 'end start'],
   });
 
-  const opacityA = useTransform(scrollYProgress, [0, 0.3, 0.6], [1, 0.8, 0.3]);
-  const scaleA = useTransform(scrollYProgress, [0, 0.3, 0.6], [1, 0.95, 0.85]);
-  const blurA = useTransform(scrollYProgress, [0, 0.3, 0.6], ['blur(0px)', 'blur(1px)', 'blur(3px)']);
+  useEffect(() => {
+    return scrollYProgress.on('change', (latest) => {
+      scrollRef.current = latest;
+      let phase = 0;
+      if (latest < 0.22) phase = 0;
+      else if (latest < 0.5) phase = 1;
+      else phase = 2;
+      setDesktopFocus(phase);
+    });
+  }, [scrollYProgress]);
 
-  const opacityB = useTransform(scrollYProgress, [0.15, 0.4, 0.7, 1], [0.3, 0.8, 1, 0.5]);
-  const scaleB = useTransform(scrollYProgress, [0.15, 0.4, 0.7, 1], [0.85, 0.95, 1, 0.9]);
-  const blurB = useTransform(scrollYProgress, [0.15, 0.4, 0.7, 1], ['blur(3px)', 'blur(1px)', 'blur(0px)', 'blur(2px)']);
-
-  const opacityC = useTransform(scrollYProgress, [0.5, 0.75, 1], [0.2, 0.6, 1]);
-  const scaleC = useTransform(scrollYProgress, [0.5, 0.75, 1], [0.8, 0.9, 1]);
-  const blurC = useTransform(scrollYProgress, [0.5, 0.75, 1], ['blur(4px)', 'blur(2px)', 'blur(0px)']);
+  const isActive = (index: number) => {
+    if (window.innerWidth >= 1024) {
+      if (desktopFocus === 0) return index < 2;
+      if (desktopFocus === 1) return index >= 2 && index < 4;
+      return index >= 4;
+    }
+    return mobileFocus === index;
+  };
 
   return (
     <section ref={containerRef} className="py-20 bg-white relative overflow-hidden">
-      {/* Background Decoration */}
       <div className="absolute inset-0 opacity-5">
         <motion.div
           className="absolute top-0 right-0 w-96 h-96 bg-yellow-600 rounded-full blur-3xl"
@@ -75,7 +136,6 @@ export default function PortfolioSection() {
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
-        {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -92,55 +152,16 @@ export default function PortfolioSection() {
           <div className="w-24 h-1 bg-yellow-600 mx-auto" />
         </motion.div>
 
-        {/* Portfolio Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 md:gap-6">
-          {portfolioItems.map((item, index) => {
-            let op: typeof opacityA, sc: typeof scaleA, bl: typeof blurA;
-            if (index < 2) { op = opacityA; sc = scaleA; bl = blurA; }
-            else if (index < 4) { op = opacityB; sc = scaleB; bl = blurB; }
-            else { op = opacityC; sc = scaleC; bl = blurC; }
-
-            return (
-              <motion.div
-                key={item.id}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: index * 0.08 }}
-                viewport={{ once: true }}
-                style={{ opacity: op, scale: sc, filter: bl }}
-                className="group relative overflow-hidden rounded-lg h-48 md:h-64 cursor-pointer"
-              >
-                {/* Image */}
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                />
-
-                {/* Overlay */}
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex flex-col justify-end p-4 md:p-6"
-                  initial={{ opacity: 0 }}
-                  whileHover={{ opacity: 1 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <h3
-                    className="text-lg md:text-xl font-bold text-white mb-2"
-                    style={{ fontFamily: 'Playfair Display' }}
-                  >
-                    {item.title}
-                  </h3>
-                  <p className="text-yellow-600 text-xs md:text-sm font-semibold">{item.category}</p>
-                </motion.div>
-
-                {/* Border Animation */}
-                <motion.div
-                  className="absolute inset-0 border-2 border-yellow-600 rounded-lg opacity-0 group-hover:opacity-100"
-                  transition={{ duration: 0.3 }}
-                />
-              </motion.div>
-            );
-          })}
+          {portfolioItems.map((item, index) => (
+            <Card
+              key={item.id}
+              item={item}
+              index={index}
+              isActive={isActive(index)}
+              onInView={setMobileFocus}
+            />
+          ))}
         </div>
       </div>
     </section>

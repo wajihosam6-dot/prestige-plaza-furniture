@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 import { useState, useRef } from 'react';
-import { Play, Pause, Volume2, VolumeX, Maximize } from '@phosphor-icons/react';
+import { Play, Pause, Volume2, SpeakerSimpleX, Maximize } from '@phosphor-icons/react';
 
 interface VideoItem {
   id: number;
@@ -148,7 +148,7 @@ function VideoCard({ video, isLarge = false }: { video: VideoItem; isLarge?: boo
               toggleMute();
             }}
           >
-            {isMuted ? <VolumeX size={18} weight="fill" /> : <Volume2 size={18} weight="fill" />}
+            {isMuted ? <SpeakerSimpleX size={18} weight="fill" /> : <Volume2 size={18} weight="fill" />}
           </motion.button>
 
           <motion.button

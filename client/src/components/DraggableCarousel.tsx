@@ -1,5 +1,5 @@
-import { motion, useMotionValue } from 'motion/react';
-import { useRef } from 'react';
+import { motion } from 'motion/react';
+import { useRef, useState, useEffect } from 'react';
 
 interface CarouselProduct {
   id: number;
@@ -49,11 +49,18 @@ const products: CarouselProduct[] = [
 
 export default function DraggableCarousel() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const x = useMotionValue(0);
+  const [constraints, setConstraints] = useState({ left: 0, right: 0 });
 
-  const totalWidth = products.length * (256 + 32);
-  const maxDrag = 0;
-  const minDrag = -(totalWidth - (containerRef.current?.offsetWidth ?? 400) + 32);
+  useEffect(() => {
+    if (!containerRef.current) return;
+    const containerWidth = containerRef.current.offsetWidth;
+    const gap = 32;
+    const cardW = window.innerWidth < 768 ? 256 : 320;
+    const totalW = products.length * (cardW + gap) - gap;
+    const right = 0;
+    const left = Math.min(0, containerWidth - totalW);
+    setConstraints({ left, right });
+  }, []);
 
   return (
     <section className="py-20 bg-gradient-to-b from-white to-neutral-50 relative overflow-hidden">
@@ -92,10 +99,9 @@ export default function DraggableCarousel() {
           <motion.div
             className="flex gap-8 cursor-grab active:cursor-grabbing"
             drag="x"
-            dragConstraints={containerRef}
-            dragElastic={0.2}
-            dragTransition={{ power: 0.3, timeConstant: 300 }}
-            style={{ x }}
+            dragConstraints={constraints}
+            dragElastic={0.05}
+            dragTransition={{ power: 0.9, timeConstant: 150 }}
             whileTap={{ cursor: 'grabbing' }}
           >
             {products.map((product, index) => (

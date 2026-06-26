@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 import { useState, useRef } from 'react';
-import { Play, Pause, SpeakerHigh, SpeakerSimpleSlash, Maximize } from '@phosphor-icons/react';
+import { Play, Pause, SpeakerHigh, SpeakerSimpleSlash, ArrowsOutSimple } from '@phosphor-icons/react';
 
 interface VideoItem {
   id: number;
@@ -160,7 +160,7 @@ function VideoCard({ video, isLarge = false }: { video: VideoItem; isLarge?: boo
               handleFullscreen();
             }}
           >
-            <Maximize size={18} weight="fill" />
+            <ArrowsOutSimple size={18} weight="fill" />
           </motion.button>
         </div>
       </motion.div>

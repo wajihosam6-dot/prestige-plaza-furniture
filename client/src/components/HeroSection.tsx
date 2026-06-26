@@ -67,9 +67,9 @@ export default function HeroSection() {
           className="mb-8"
         >
           <img
-            src="/manus-storage/prestige_plaza_logo_095dbdd8.png"
+            src="/manus-storage/prestige_plaza_logo_real_0ced4f3f.png"
             alt="Prestige Plaza"
-            className="w-24 h-24 mx-auto"
+            className="w-32 h-32 mx-auto object-contain"
           />
         </motion.div>
 

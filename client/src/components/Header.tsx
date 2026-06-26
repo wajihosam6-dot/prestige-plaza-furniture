@@ -37,14 +37,10 @@ export default function Header() {
           transition={{ duration: 0.3 }}
         >
           <img
-            src="/manus-storage/prestige_plaza_logo_095dbdd8.png"
+            src="/manus-storage/prestige_plaza_logo_real_0ced4f3f.png"
             alt="Prestige Plaza"
-            className="w-10 h-10"
+            className="w-12 h-12 object-contain"
           />
-          <div className="hidden sm:block">
-            <h1 className="text-lg font-bold text-gray-800">PRESTIGE</h1>
-            <p className="text-xs text-amber-600 font-semibold">PLAZA</p>
-          </div>
         </motion.div>
 
         <nav className="hidden md:flex items-center gap-8">

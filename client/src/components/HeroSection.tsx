@@ -32,39 +32,61 @@ function TypewriterText({ text, className, delay = 0, speed = 0.06 }: { text: st
   );
 }
 
+const heroImages = [
+  '/images/hero_furniture_showcase_eaa79e5a.png',
+  '/images/sofa_collection_hero_92dbb842.png',
+  '/images/interior_design_showcase_bcb31a16.png',
+  '/images/showroom_ambiance_ea0897f1.png',
+];
+
 export default function HeroSection() {
   const containerRef = useRef(null);
   const { scrollY } = useScroll();
+  const [current, setCurrent] = useState(0);
 
   const y = useTransform(scrollY, [0, 500], [0, 200]);
-  const opacity = useTransform(scrollY, [0, 300], [1, 0]);
-  const scale = useTransform(scrollY, [0, 300], [1, 0.8]);
+  const sectionOpacity = useTransform(scrollY, [0, 300], [1, 0]);
+  const sectionScale = useTransform(scrollY, [0, 300], [1, 0.8]);
   const textY = useTransform(scrollY, [0, 400], [0, 100]);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrent(prev => (prev + 1) % heroImages.length);
+    }, 5500);
+    return () => clearInterval(timer);
+  }, []);
 
   return (
     <motion.section
       ref={containerRef}
       className="relative h-screen flex items-center justify-center overflow-hidden pt-20"
-      style={{ opacity, scale }}
+      style={{ opacity: sectionOpacity, scale: sectionScale }}
     >
-      {/* Background Image with Parallax */}
-      <motion.div
-        className="absolute inset-0 z-0"
-        style={{ y }}
-      >
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: 'url(/images/hero_furniture_showcase_eaa79e5a.png)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundAttachment: 'fixed',
-          }}
-        >
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/50" />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-black/20" />
-          <div className="absolute inset-0" style={{ boxShadow: 'inset 0 0 150px rgba(0,0,0,0.5)' }} />
-        </div>
+      {/* Cinematic Background Slideshow */}
+      <motion.div className="absolute inset-0 z-0" style={{ y }}>
+        {heroImages.map((img, i) => (
+          <motion.div
+            key={img}
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `url(${img})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+            }}
+            initial={false}
+            animate={{
+              opacity: i === current ? 1 : 0,
+              scale: i === current ? [1, 1.08] : 1,
+            }}
+            transition={{
+              opacity: { duration: 1.2, ease: 'easeInOut' },
+              scale: { duration: 5.5, ease: 'easeOut' },
+            }}
+          />
+        ))}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/50" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-black/20" />
+        <div className="absolute inset-0" style={{ boxShadow: 'inset 0 0 150px rgba(0,0,0,0.5)' }} />
       </motion.div>
 
       {/* Animated Background Elements */}
@@ -140,9 +162,26 @@ export default function HeroSection() {
         animate={{ y: [0, 15, 0] }}
         transition={{ duration: 2.5, repeat: Infinity }}
       >
-        <div className="flex flex-col items-center gap-2">
-          <span className="text-white text-sm font-light">Scroll to Explore</span>
-          <ArrowDown size={32} weight="bold" className="text-yellow-600" />
+        <div className="flex flex-col items-center gap-4">
+          {/* Slide Indicators */}
+          <div className="flex items-center gap-2">
+            {heroImages.map((_, i) => (
+              <motion.button
+                key={i}
+                className="rounded-full cursor-pointer"
+                style={{ width: i === current ? 24 : 8, height: 8 }}
+                animate={{
+                  backgroundColor: i === current ? 'rgb(202, 138, 4)' : 'rgba(255,255,255,0.4)',
+                }}
+                transition={{ duration: 0.4 }}
+                onClick={() => setCurrent(i)}
+              />
+            ))}
+          </div>
+          <div className="flex flex-col items-center gap-2">
+            <span className="text-white text-sm font-light">Scroll to Explore</span>
+            <ArrowDown size={32} weight="bold" className="text-yellow-600" />
+          </div>
         </div>
       </motion.div>
 

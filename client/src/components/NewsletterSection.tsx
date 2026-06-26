@@ -16,7 +16,7 @@ export default function NewsletterSection() {
   };
 
   return (
-    <section className="py-20 bg-gradient-to-b from-white to-gray-50 relative overflow-hidden">
+    <section className="py-20 bg-gradient-to-b from-white to-neutral-50 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 opacity-5">
         <motion.div
@@ -38,12 +38,12 @@ export default function NewsletterSection() {
         >
           {/* Header */}
           <h2
-            className="text-5xl font-bold text-gray-800 mb-4"
+            className="text-5xl font-bold text-neutral-800 mb-4"
             style={{ fontFamily: 'Playfair Display' }}
           >
             Stay Updated
           </h2>
-          <p className="text-gray-600 text-lg mb-8">
+          <p className="text-neutral-600 text-lg mb-8">
             Subscribe to our newsletter to get the latest updates on new collections, exclusive offers, and design inspiration.
           </p>
 
@@ -62,7 +62,7 @@ export default function NewsletterSection() {
                 placeholder="Enter your email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="flex-1 px-6 py-4 bg-white border-2 border-gray-300 rounded-sm focus:border-yellow-600 focus:outline-none transition-all text-gray-800 placeholder-gray-400"
+                className="flex-1 px-6 py-4 bg-white border-2 border-neutral-300 rounded-sm focus:border-yellow-600 focus:outline-none transition-all text-neutral-800 placeholder-neutral-400"
                 whileFocus={{
                   borderColor: '#ca8a04',
                   boxShadow: '0 0 0 3px rgba(217, 119, 6, 0.1)',
@@ -94,7 +94,7 @@ export default function NewsletterSection() {
 
           {/* Privacy Note */}
           <motion.p
-            className="text-gray-500 text-sm mt-6"
+            className="text-neutral-500 text-sm mt-6"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.4 }}

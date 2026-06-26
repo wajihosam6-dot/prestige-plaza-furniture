@@ -31,7 +31,7 @@ export default function MapSection() {
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-b from-white to-gray-50 relative overflow-hidden">
+    <section className="py-20 bg-gradient-to-b from-white to-neutral-50 relative overflow-hidden">
       {/* Background Decoration */}
       <div className="absolute inset-0 opacity-5">
         <motion.div
@@ -54,12 +54,12 @@ export default function MapSection() {
           className="text-center mb-16"
         >
           <h2
-            className="text-5xl font-bold text-gray-800 mb-4"
+            className="text-5xl font-bold text-neutral-800 mb-4"
             style={{ fontFamily: 'Playfair Display' }}
           >
             Visit Our Showroom
           </h2>
-          <p className="text-gray-600 text-lg mb-4">
+          <p className="text-neutral-600 text-lg mb-4">
             Experience our luxury furniture collection in person
           </p>
           <div className="w-24 h-1 bg-yellow-600 mx-auto" />
@@ -118,12 +118,12 @@ export default function MapSection() {
                     </motion.div>
                     <div>
                       <h3
-                        className="text-lg font-bold text-gray-800 mb-1"
+                        className="text-lg font-bold text-neutral-800 mb-1"
                         style={{ fontFamily: 'Playfair Display' }}
                       >
                         {info.title}
                       </h3>
-                      <p className="text-gray-600 text-sm leading-relaxed">
+                      <p className="text-neutral-600 text-sm leading-relaxed">
                         {info.content}
                       </p>
                     </div>
@@ -156,7 +156,7 @@ export default function MapSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: true }}
-          className="mt-16 bg-gradient-to-r from-gray-800 to-gray-900 rounded-lg p-8 text-white"
+          className="mt-16 bg-gradient-to-r from-neutral-800 to-neutral-900 rounded-lg p-8 text-white"
         >
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center">
@@ -166,7 +166,7 @@ export default function MapSection() {
               >
                 Expert Staff
               </h4>
-              <p className="text-gray-300">
+              <p className="text-neutral-300">
                 Our experienced team is ready to help you find the perfect furniture for your space.
               </p>
             </div>
@@ -177,7 +177,7 @@ export default function MapSection() {
               >
                 Free Consultation
               </h4>
-              <p className="text-gray-300">
+              <p className="text-neutral-300">
                 Get personalized design advice and interior styling recommendations.
               </p>
             </div>
@@ -188,7 +188,7 @@ export default function MapSection() {
               >
                 Delivery Service
               </h4>
-              <p className="text-gray-300">
+              <p className="text-neutral-300">
                 Fast and reliable delivery to your home with professional installation.
               </p>
             </div>

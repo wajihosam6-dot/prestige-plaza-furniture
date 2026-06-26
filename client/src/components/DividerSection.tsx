@@ -2,7 +2,7 @@ import { motion } from 'motion/react';
 
 export default function DividerSection() {
   return (
-    <section className="py-12 bg-gradient-to-r from-gray-800 via-gray-900 to-gray-800 relative overflow-hidden">
+    <section className="py-12 bg-gradient-to-r from-neutral-800 via-neutral-900 to-neutral-800 relative overflow-hidden">
       <div className="container mx-auto px-4 relative z-10">
         <div className="flex items-center justify-center gap-4">
           {/* Left Line */}

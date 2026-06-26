@@ -66,7 +66,7 @@ export default function ProductCarousel3D() {
   };
 
   return (
-    <section className="py-20 bg-gradient-to-b from-white to-gray-50 relative overflow-hidden">
+    <section className="py-20 bg-gradient-to-b from-white to-neutral-50 relative overflow-hidden">
       {/* Background Decoration */}
       <div className="absolute inset-0 opacity-5">
         <motion.div
@@ -89,7 +89,7 @@ export default function ProductCarousel3D() {
           className="text-center mb-16"
         >
           <h2
-            className="text-5xl font-bold text-gray-800 mb-4"
+            className="text-5xl font-bold text-neutral-800 mb-4"
             style={{ fontFamily: 'Playfair Display' }}
           >
             3D Product Showcase
@@ -166,7 +166,7 @@ export default function ProductCarousel3D() {
                       {product.category}
                     </p>
                     <h3
-                      className="text-2xl font-bold text-gray-800 mb-3"
+                      className="text-2xl font-bold text-neutral-800 mb-3"
                       style={{ fontFamily: 'Playfair Display' }}
                     >
                       {product.name}
@@ -217,7 +217,7 @@ export default function ProductCarousel3D() {
               key={index}
               onClick={() => setActiveIndex(index)}
               className={`h-2 rounded-full transition-all ${
-                index === activeIndex ? 'bg-yellow-600 w-8' : 'bg-gray-300 w-2'
+                index === activeIndex ? 'bg-yellow-600 w-8' : 'bg-neutral-300 w-2'
               }`}
               whileHover={{ scale: 1.2 }}
             />

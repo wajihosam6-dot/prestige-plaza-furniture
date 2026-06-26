@@ -73,7 +73,7 @@ export default function InteractiveProductGrid() {
   };
 
   return (
-    <section className="py-20 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+    <section className="py-20 bg-gradient-to-b from-neutral-50 to-white relative overflow-hidden">
       {/* Background Decoration */}
       <div className="absolute inset-0 opacity-5">
         <motion.div
@@ -95,7 +95,7 @@ export default function InteractiveProductGrid() {
           className="text-center mb-16"
         >
           <h2
-            className="text-5xl font-bold text-gray-800 mb-4"
+            className="text-5xl font-bold text-neutral-800 mb-4"
             style={{ fontFamily: 'Playfair Display' }}
           >
             Featured Products
@@ -124,7 +124,7 @@ export default function InteractiveProductGrid() {
                 className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all"
               >
                 {/* Image Container */}
-                <div className="relative h-64 overflow-hidden bg-gray-200">
+                <div className="relative h-64 overflow-hidden bg-neutral-200">
                   <motion.img
                     src={product.image}
                     alt={product.name}
@@ -188,7 +188,7 @@ export default function InteractiveProductGrid() {
                 {/* Product Info */}
                 <div className="p-6">
                   <h3
-                    className="text-xl font-bold text-gray-800 mb-2"
+                    className="text-xl font-bold text-neutral-800 mb-2"
                     style={{ fontFamily: 'Playfair Display' }}
                   >
                     {product.name}

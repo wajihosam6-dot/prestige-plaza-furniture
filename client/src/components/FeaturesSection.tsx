@@ -37,7 +37,7 @@ const features: Feature[] = [
 
 export default function FeaturesSection() {
   return (
-    <section className="py-20 bg-gradient-to-b from-white to-gray-50 relative overflow-hidden">
+    <section className="py-20 bg-gradient-to-b from-white to-neutral-50 relative overflow-hidden">
       {/* Animated Background */}
       <div className="absolute inset-0 opacity-5">
         <motion.div
@@ -60,7 +60,7 @@ export default function FeaturesSection() {
           className="text-center mb-16"
         >
           <h2
-            className="text-5xl font-bold text-gray-800 mb-4"
+            className="text-5xl font-bold text-neutral-800 mb-4"
             style={{ fontFamily: 'Playfair Display' }}
           >
             Why Choose Us
@@ -97,14 +97,14 @@ export default function FeaturesSection() {
 
               {/* Title */}
               <h3
-                className="text-2xl font-bold text-gray-800 mb-3"
+                className="text-2xl font-bold text-neutral-800 mb-3"
                 style={{ fontFamily: 'Playfair Display' }}
               >
                 {feature.title}
               </h3>
 
               {/* Description */}
-              <p className="text-gray-600 leading-relaxed">{feature.description}</p>
+              <p className="text-neutral-600 leading-relaxed">{feature.description}</p>
             </motion.div>
           ))}
         </div>

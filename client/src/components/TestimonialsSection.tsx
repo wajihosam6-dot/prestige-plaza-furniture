@@ -35,7 +35,7 @@ const testimonials: Testimonial[] = [
 
 export default function TestimonialsSection() {
   return (
-    <section className="py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 relative overflow-hidden">
+    <section className="py-20 bg-gradient-to-br from-neutral-900 via-neutral-800 to-neutral-900 relative overflow-hidden">
       {/* Background Decoration */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-yellow-600 rounded-full blur-3xl" />
@@ -73,7 +73,7 @@ export default function TestimonialsSection() {
                 y: -10,
                 boxShadow: '0 30px 60px rgba(217, 119, 6, 0.2)',
               }}
-              className="bg-gradient-to-br from-gray-800 to-gray-900 p-8 rounded-lg border border-yellow-600/20 backdrop-blur-sm cursor-pointer"
+              className="bg-gradient-to-br from-neutral-800 to-neutral-900 p-8 rounded-lg border border-yellow-600/20 backdrop-blur-sm cursor-pointer"
             >
               {/* Stars */}
               <div className="flex gap-1 mb-4">
@@ -91,7 +91,7 @@ export default function TestimonialsSection() {
               </div>
 
               {/* Quote */}
-              <p className="text-gray-300 mb-6 text-lg leading-relaxed italic">
+              <p className="text-neutral-300 mb-6 text-lg leading-relaxed italic">
                 "{testimonial.content}"
               </p>
 

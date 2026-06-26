@@ -92,7 +92,7 @@ export default function DraggableCarousel() {
   };
 
   return (
-    <section className="py-20 bg-gradient-to-b from-white to-gray-50 relative overflow-hidden">
+    <section className="py-20 bg-gradient-to-b from-white to-neutral-50 relative overflow-hidden">
       {/* Background Decoration */}
       <div className="absolute inset-0 opacity-5">
         <motion.div
@@ -114,12 +114,12 @@ export default function DraggableCarousel() {
           className="text-center mb-16"
         >
           <h2
-            className="text-5xl font-bold text-gray-800 mb-4"
+            className="text-5xl font-bold text-neutral-800 mb-4"
             style={{ fontFamily: 'Playfair Display' }}
           >
             Featured Collections
           </h2>
-          <p className="text-gray-600 text-lg">Drag to explore our premium collections</p>
+          <p className="text-neutral-600 text-lg">Drag to explore our premium collections</p>
           <div className="w-24 h-1 bg-yellow-600 mx-auto mt-4" />
         </motion.div>
 
@@ -159,7 +159,7 @@ export default function DraggableCarousel() {
                   className="bg-white rounded-lg shadow-lg overflow-hidden h-full hover:shadow-2xl transition-all"
                 >
                   {/* Image Container */}
-                  <div className="relative h-64 overflow-hidden bg-gray-200">
+                  <div className="relative h-64 overflow-hidden bg-neutral-200">
                     <motion.img
                       src={product.image}
                       alt={product.title}
@@ -192,12 +192,12 @@ export default function DraggableCarousel() {
                   {/* Content */}
                   <div className="p-6">
                     <h3
-                      className="text-2xl font-bold text-gray-800 mb-2"
+                      className="text-2xl font-bold text-neutral-800 mb-2"
                       style={{ fontFamily: 'Playfair Display' }}
                     >
                       {product.title}
                     </h3>
-                    <p className="text-gray-600 text-sm">{product.description}</p>
+                    <p className="text-neutral-600 text-sm">{product.description}</p>
                   </div>
                 </motion.div>
               </motion.div>
@@ -207,7 +207,7 @@ export default function DraggableCarousel() {
 
         {/* Scroll Indicator */}
         <motion.div
-          className="text-center mt-12 text-gray-500"
+          className="text-center mt-12 text-neutral-500"
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
         >

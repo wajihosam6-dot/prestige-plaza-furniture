@@ -122,7 +122,7 @@ function VideoCard({ video, isLarge = false }: { video: VideoItem; isLarge?: boo
           >
             {video.title}
           </h3>
-          <p className={`text-gray-300 ${isLarge ? 'text-lg' : 'text-sm'}`}>{video.subtitle}</p>
+          <p className={`text-neutral-300 ${isLarge ? 'text-lg' : 'text-sm'}`}>{video.subtitle}</p>
         </div>
 
         {/* Control Buttons */}
@@ -173,7 +173,7 @@ function VideoCard({ video, isLarge = false }: { video: VideoItem; isLarge?: boo
 
 export default function VideoShowcase() {
   return (
-    <section className="py-20 bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 relative overflow-hidden">
+    <section className="py-20 bg-gradient-to-b from-neutral-900 via-neutral-800 to-neutral-900 relative overflow-hidden">
       {/* Background Decorations */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-yellow-600 rounded-full blur-3xl" />
@@ -205,7 +205,7 @@ export default function VideoShowcase() {
             Discover the Art of Living
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-yellow-600 to-yellow-400 mx-auto mb-6" />
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+          <p className="text-neutral-400 text-lg max-w-2xl mx-auto">
             Take a journey through our showroom and witness the craftsmanship, elegance, and attention to detail that defines Prestige Plaza.
           </p>
         </motion.div>

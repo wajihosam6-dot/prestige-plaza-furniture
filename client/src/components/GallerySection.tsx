@@ -51,7 +51,7 @@ export default function GallerySection() {
   const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
 
   return (
-    <section ref={containerRef} className="py-20 bg-gradient-to-b from-gray-50 to-white overflow-hidden">
+    <section ref={containerRef} className="py-20 bg-gradient-to-b from-neutral-50 to-white overflow-hidden">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -60,7 +60,7 @@ export default function GallerySection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-5xl font-bold mb-4 text-gray-800" style={{ fontFamily: 'Playfair Display' }}>
+          <h2 className="text-5xl font-bold mb-4 text-neutral-800" style={{ fontFamily: 'Playfair Display' }}>
             Gallery
           </h2>
           <div className="w-24 h-1 bg-yellow-600 mx-auto" />
@@ -87,7 +87,7 @@ export default function GallerySection() {
                   <h3 className="text-2xl font-bold text-white mb-2" style={{ fontFamily: 'Playfair Display' }}>
                     {image.title}
                   </h3>
-                  <p className="text-gray-200 text-sm">{image.description}</p>
+                  <p className="text-neutral-200 text-sm">{image.description}</p>
                 </div>
               </div>
             </motion.div>

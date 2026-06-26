@@ -48,7 +48,7 @@ export default function Header() {
             <motion.a
               key={item.label}
               href={item.href}
-              className="text-gray-700 font-medium text-sm hover:text-yellow-600 transition-colors relative"
+              className="text-neutral-700 font-medium text-sm hover:text-yellow-600 transition-colors relative"
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1, duration: 0.5 }}
@@ -74,7 +74,7 @@ export default function Header() {
         </motion.button>
 
         <motion.button
-          className="md:hidden text-gray-800"
+          className="md:hidden text-neutral-800"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
@@ -89,7 +89,7 @@ export default function Header() {
 
       {isMobileMenuOpen && (
         <motion.nav
-          className="md:hidden bg-white border-t border-gray-200"
+          className="md:hidden bg-white border-t border-neutral-200"
           initial={{ opacity: 0, height: 0 }}
           animate={{ opacity: 1, height: 'auto' }}
           exit={{ opacity: 0, height: 0 }}
@@ -100,7 +100,7 @@ export default function Header() {
               <a
                 key={item.label}
                 href={item.href}
-                className="text-gray-700 font-medium hover:text-yellow-600 transition-colors"
+                className="text-neutral-700 font-medium hover:text-yellow-600 transition-colors"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {item.label}

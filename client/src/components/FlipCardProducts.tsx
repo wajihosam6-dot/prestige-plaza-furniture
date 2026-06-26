@@ -56,7 +56,7 @@ export default function FlipCardProducts() {
   };
 
   return (
-    <section className="py-20 bg-gradient-to-b from-white to-gray-50 relative overflow-hidden">
+    <section className="py-20 bg-gradient-to-b from-white to-neutral-50 relative overflow-hidden">
       {/* Background Decoration */}
       <div className="absolute inset-0 opacity-5">
         <motion.div
@@ -79,12 +79,12 @@ export default function FlipCardProducts() {
           className="text-center mb-16"
         >
           <h2
-            className="text-5xl font-bold text-gray-800 mb-4"
+            className="text-5xl font-bold text-neutral-800 mb-4"
             style={{ fontFamily: 'Playfair Display' }}
           >
             Flip & Discover
           </h2>
-          <p className="text-gray-600 text-lg">Click on any card to flip and see details</p>
+          <p className="text-neutral-600 text-lg">Click on any card to flip and see details</p>
           <div className="w-24 h-1 bg-yellow-600 mx-auto mt-4" />
         </motion.div>
 
@@ -160,7 +160,7 @@ export default function FlipCardProducts() {
 
                   <div className="flex gap-3 pt-4 border-t border-white/20">
                     <motion.button
-                      className="flex-1 px-3 py-2 bg-white text-yellow-600 rounded-sm font-semibold flex items-center justify-center gap-2 hover:bg-gray-100 transition-all"
+                      className="flex-1 px-3 py-2 bg-white text-yellow-600 rounded-sm font-semibold flex items-center justify-center gap-2 hover:bg-neutral-100 transition-all"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                     >

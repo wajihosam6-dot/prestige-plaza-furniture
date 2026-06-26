@@ -103,13 +103,13 @@ export default function Home() {
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-4xl font-bold mb-6 text-gray-800" style={{ fontFamily: 'Playfair Display' }}>
+              <h2 className="text-4xl font-bold mb-6 text-neutral-800" style={{ fontFamily: 'Playfair Display' }}>
                 About Prestige Plaza
               </h2>
-              <p className="text-gray-600 text-lg mb-4 leading-relaxed">
+              <p className="text-neutral-600 text-lg mb-4 leading-relaxed">
                 At Prestige Plaza, we believe that luxury furniture is more than just pieces of wood and fabric. It's about creating spaces where memories are made and dreams come true.
               </p>
-              <p className="text-gray-600 text-lg mb-8 leading-relaxed">
+              <p className="text-neutral-600 text-lg mb-8 leading-relaxed">
                 With years of experience in the furniture industry, we curate the finest collections from around the world to bring you unparalleled quality and design.
               </p>
               <motion.button
@@ -134,7 +134,7 @@ export default function Home() {
       <MapSection />
 
       {/* Contact Section */}
-      <section className="py-20 bg-gray-900 text-white">
+      <section className="py-20 bg-neutral-900 text-white">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -162,7 +162,7 @@ export default function Home() {
                 <h3 className="text-2xl font-bold mb-2" style={{ fontFamily: 'Playfair Display' }}>
                   Phone
                 </h3>
-                <p className="text-gray-300 text-lg">+968 7725 7779</p>
+                <p className="text-neutral-300 text-lg">+968 7725 7779</p>
               </div>
             </motion.div>
 
@@ -178,7 +178,7 @@ export default function Home() {
                 <h3 className="text-2xl font-bold mb-2" style={{ fontFamily: 'Playfair Display' }}>
                   Location
                 </h3>
-                <p className="text-gray-300 text-lg">HCC5+MR9, Bawshar St, Muscat, Oman</p>
+                <p className="text-neutral-300 text-lg">HCC5+MR9, Bawshar St, Muscat, Oman</p>
               </div>
             </motion.div>
           </div>
@@ -186,7 +186,7 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-black text-gray-400 py-8 border-t border-gray-800">
+      <footer className="bg-black text-neutral-400 py-8 border-t border-neutral-800">
         <div className="container mx-auto px-4 text-center">
           <p>&copy; 2026 Prestige Plaza. All rights reserved.</p>
         </div>

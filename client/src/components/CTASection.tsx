@@ -2,7 +2,7 @@ import { motion } from 'motion/react';
 
 export default function CTASection() {
   return (
-    <section className="py-20 bg-gradient-to-r from-gray-800 to-gray-900 relative overflow-hidden">
+    <section className="py-20 bg-gradient-to-r from-neutral-800 to-neutral-900 relative overflow-hidden">
       {/* Background Decoration */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-0 right-0 w-96 h-96 bg-yellow-600 rounded-full blur-3xl" />
@@ -23,7 +23,7 @@ export default function CTASection() {
           >
             Ready to Transform Your Space?
           </h2>
-          <p className="text-gray-300 text-lg mb-8">
+          <p className="text-neutral-300 text-lg mb-8">
             Visit our showroom or contact us today to explore our exclusive furniture collections and find the perfect pieces for your home.
           </p>
 
@@ -46,13 +46,13 @@ export default function CTASection() {
 
           {/* Contact Info */}
           <motion.div
-            className="mt-12 pt-8 border-t border-gray-700"
+            className="mt-12 pt-8 border-t border-neutral-700"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <p className="text-gray-400 mb-4">Or reach us directly:</p>
+            <p className="text-neutral-400 mb-4">Or reach us directly:</p>
             <a
               href="tel:+96877257779"
               className="text-yellow-600 text-2xl font-bold hover:text-yellow-500 transition-colors"

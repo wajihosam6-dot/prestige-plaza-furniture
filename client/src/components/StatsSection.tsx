@@ -39,7 +39,7 @@ function AnimatedCounter({ value, duration = 2 }: { value: number; duration?: nu
 
 export default function StatsSection() {
   return (
-    <section className="py-20 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 relative overflow-hidden">
+    <section className="py-20 bg-gradient-to-r from-neutral-900 via-neutral-800 to-neutral-900 relative overflow-hidden">
       {/* Background Decoration */}
       <div className="absolute inset-0 opacity-10">
         <motion.div

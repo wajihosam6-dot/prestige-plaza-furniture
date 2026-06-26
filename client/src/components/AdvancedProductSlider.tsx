@@ -69,7 +69,7 @@ export default function AdvancedProductSlider() {
   };
 
   return (
-    <section className="py-20 bg-gradient-to-b from-gray-900 to-gray-800 relative overflow-hidden">
+    <section className="py-20 bg-gradient-to-b from-neutral-900 to-neutral-800 relative overflow-hidden">
       {/* Background Decoration */}
       <div className="absolute inset-0 opacity-10">
         <motion.div
@@ -137,7 +137,7 @@ export default function AdvancedProductSlider() {
                 >
                   {sliderProducts[current].title}
                 </h3>
-                <p className="text-lg text-gray-200 mb-6">
+                <p className="text-lg text-neutral-200 mb-6">
                   {sliderProducts[current].description}
                 </p>
 

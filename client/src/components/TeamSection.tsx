@@ -36,7 +36,7 @@ const teamMembers: TeamMember[] = [
 
 export default function TeamSection() {
   return (
-    <section className="py-20 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+    <section className="py-20 bg-gradient-to-b from-neutral-50 to-white relative overflow-hidden">
       {/* Background Decoration */}
       <div className="absolute inset-0 opacity-5">
         <motion.div
@@ -58,7 +58,7 @@ export default function TeamSection() {
           className="text-center mb-16"
         >
           <h2
-            className="text-5xl font-bold text-gray-800 mb-4"
+            className="text-5xl font-bold text-neutral-800 mb-4"
             style={{ fontFamily: 'Playfair Display' }}
           >
             Meet Our Team
@@ -95,7 +95,7 @@ export default function TeamSection() {
 
               {/* Name */}
               <h3
-                className="text-2xl font-bold text-gray-800 mb-2 text-center"
+                className="text-2xl font-bold text-neutral-800 mb-2 text-center"
                 style={{ fontFamily: 'Playfair Display' }}
               >
                 {member.name}
@@ -105,11 +105,11 @@ export default function TeamSection() {
               <p className="text-yellow-600 font-semibold text-center mb-4">{member.role}</p>
 
               {/* Bio */}
-              <p className="text-gray-600 text-center text-sm leading-relaxed">{member.bio}</p>
+              <p className="text-neutral-600 text-center text-sm leading-relaxed">{member.bio}</p>
 
               {/* Social Links */}
               <motion.div
-                className="flex justify-center gap-4 mt-6 pt-6 border-t border-gray-200"
+                className="flex justify-center gap-4 mt-6 pt-6 border-t border-neutral-200"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 transition={{ delay: 0.3 }}
@@ -119,7 +119,7 @@ export default function TeamSection() {
                   <motion.a
                     key={social}
                     href="#"
-                    className="text-gray-400 hover:text-yellow-600 transition-colors"
+                    className="text-neutral-400 hover:text-yellow-600 transition-colors"
                     whileHover={{ scale: 1.2 }}
                   >
                     {social.charAt(0)}

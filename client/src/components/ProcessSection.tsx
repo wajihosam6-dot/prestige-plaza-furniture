@@ -42,7 +42,7 @@ const steps: Step[] = [
 
 export default function ProcessSection() {
   return (
-    <section className="py-20 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+    <section className="py-20 bg-gradient-to-b from-neutral-50 to-white relative overflow-hidden">
       {/* Background Decoration */}
       <div className="absolute inset-0 opacity-5">
         <motion.div
@@ -65,7 +65,7 @@ export default function ProcessSection() {
           className="text-center mb-16"
         >
           <h2
-            className="text-5xl font-bold text-gray-800 mb-4"
+            className="text-5xl font-bold text-neutral-800 mb-4"
             style={{ fontFamily: 'Playfair Display' }}
           >
             Our Process
@@ -128,14 +128,14 @@ export default function ProcessSection() {
 
                   {/* Title */}
                   <h3
-                    className="text-2xl font-bold text-gray-800 mb-3"
+                    className="text-2xl font-bold text-neutral-800 mb-3"
                     style={{ fontFamily: 'Playfair Display' }}
                   >
                     {step.title}
                   </h3>
 
                   {/* Description */}
-                  <p className="text-gray-600 leading-relaxed">{step.description}</p>
+                  <p className="text-neutral-600 leading-relaxed">{step.description}</p>
                 </motion.div>
               </motion.div>
             ))}

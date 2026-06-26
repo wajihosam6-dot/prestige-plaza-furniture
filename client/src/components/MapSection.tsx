@@ -1,134 +1,7 @@
 import { motion } from 'motion/react';
-import { useEffect, useRef, useState } from 'react';
 import { MapPin, Phone, Clock, EnvelopeOpen } from '@phosphor-icons/react';
 
 export default function MapSection() {
-  const mapRef = useRef<HTMLDivElement>(null);
-  const [mapLoaded, setMapLoaded] = useState(false);
-
-  useEffect(() => {
-    // Load Google Maps API
-    const script = document.createElement('script');
-    script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyDummy&libraries=marker`;
-    script.async = true;
-    script.defer = true;
-
-    script.onload = () => {
-      if (mapRef.current && window.google) {
-        const map = new window.google.maps.Map(mapRef.current, {
-          zoom: 16,
-          center: { lat: 23.571356, lng: 58.4119759 },
-          mapTypeControl: true,
-          fullscreenControl: true,
-          zoomControl: true,
-          streetViewControl: true,
-          styles: [
-            {
-              featureType: 'all',
-              elementType: 'labels.text.fill',
-              stylers: [{ color: '#616161' }],
-            },
-            {
-              featureType: 'all',
-              elementType: 'labels.text.stroke',
-              stylers: [{ color: '#f5f5f5' }],
-            },
-            {
-              featureType: 'all',
-              elementType: 'labels.icon',
-              stylers: [{ visibility: 'off' }],
-            },
-            {
-              featureType: 'administrative',
-              elementType: 'geometry.fill',
-              stylers: [{ color: '#f0f0f0' }],
-            },
-            {
-              featureType: 'administrative',
-              elementType: 'geometry.stroke',
-              stylers: [{ color: '#bdbdbd' }],
-            },
-            {
-              featureType: 'poi',
-              elementType: 'geometry',
-              stylers: [{ color: '#eeeeee' }],
-            },
-            {
-              featureType: 'road',
-              elementType: 'geometry.fill',
-              stylers: [{ color: '#ffffff' }],
-            },
-            {
-              featureType: 'road',
-              elementType: 'geometry.stroke',
-              stylers: [{ color: '#e0e0e0' }],
-            },
-            {
-              featureType: 'transit',
-              elementType: 'geometry.fill',
-              stylers: [{ color: '#e0e0e0' }],
-            },
-            {
-              featureType: 'water',
-              elementType: 'geometry.fill',
-              stylers: [{ color: '#e0e0e0' }],
-            },
-          ],
-        });
-
-        // Add custom marker
-        const marker = new window.google.maps.Marker({
-          position: { lat: 23.571356, lng: 58.4119759 },
-          map: map,
-          title: 'Prestige Plaza',
-          icon: {
-            path: window.google.maps.SymbolPath.CIRCLE,
-            scale: 12,
-            fillColor: '#ca8a04',
-            fillOpacity: 1,
-            strokeColor: '#ffffff',
-            strokeWeight: 3,
-          },
-        });
-
-        // Add info window
-        const infoWindow = new window.google.maps.InfoWindow({
-          content: `
-            <div style="padding: 12px; font-family: 'Playfair Display', serif;">
-              <h3 style="margin: 0 0 8px 0; color: #374151; font-size: 18px;">Prestige Plaza</h3>
-              <p style="margin: 0 0 6px 0; color: #6b7280; font-size: 14px;">
-                <strong>Address:</strong> HCC5+MR9, Bawshar St, Muscat, Oman
-              </p>
-              <p style="margin: 0 0 6px 0; color: #6b7280; font-size: 14px;">
-                <strong>Phone:</strong> +968 7725 7779
-              </p>
-              <p style="margin: 0; color: #6b7280; font-size: 14px;">
-                <strong>Hours:</strong> 9:00 AM - 9:00 PM
-              </p>
-            </div>
-          `,
-        });
-
-        marker.addListener('click', () => {
-          infoWindow.open(map, marker);
-        });
-
-        // Open info window by default
-        infoWindow.open(map, marker);
-
-        setMapLoaded(true);
-      }
-    };
-
-    document.head.appendChild(script);
-
-    return () => {
-      // Cleanup
-      if (document.head.contains(script)) {
-        document.head.removeChild(script);
-      }
-    };
-  }, []);
 
   const contactInfo = [
     {
@@ -202,9 +75,16 @@ export default function MapSection() {
             viewport={{ once: true }}
             className="lg:col-span-2"
           >
-            <div
-              ref={mapRef}
-              className="w-full h-96 lg:h-[500px] rounded-lg shadow-2xl overflow-hidden"
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.123456!2d58.4099259!3d23.571356!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDM0JzE2LjkiTiA1OMKwMjQnNDMuMSJF!5e0!3m2!1sen!2som!4v1"
+              width="100%"
+              height="100%"
+              className="w-full h-96 lg:h-[500px] rounded-lg shadow-2xl"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Prestige Plaza Location"
             />
           </motion.div>
 

@@ -39,7 +39,7 @@ export default function Header() {
           <img
             src="/images/prestige_plaza_logo_real_0ced4f3f.png"
             alt="Prestige Plaza"
-            className="w-12 h-12 object-contain"
+            className="w-20 h-20 object-contain"
           />
         </motion.div>
 

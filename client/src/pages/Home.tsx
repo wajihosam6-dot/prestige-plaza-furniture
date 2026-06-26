@@ -2,6 +2,7 @@ import { motion, useScroll, useTransform } from 'motion/react';
 import { useRef } from 'react';
 import Header from '@/components/Header';
 import HeroSection from '@/components/HeroSection';
+import VideoShowcase from '@/components/VideoShowcase';
 import GallerySection from '@/components/GallerySection';
 import FeaturesSection from '@/components/FeaturesSection';
 import ProcessSection from '@/components/ProcessSection';
@@ -30,6 +31,9 @@ export default function Home() {
 
       {/* Hero Section */}
       <HeroSection />
+
+      {/* Video Showcase Section */}
+      <VideoShowcase />
 
       {/* Draggable Carousel Section */}
       <DraggableCarousel />

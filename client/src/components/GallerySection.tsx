@@ -63,7 +63,7 @@ export default function GallerySection() {
           <h2 className="text-5xl font-bold mb-4 text-gray-800" style={{ fontFamily: 'Playfair Display' }}>
             Gallery
           </h2>
-          <div className="w-24 h-1 bg-amber-600 mx-auto" />
+          <div className="w-24 h-1 bg-yellow-600 mx-auto" />
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

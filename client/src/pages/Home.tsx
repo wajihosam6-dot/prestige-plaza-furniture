@@ -109,7 +109,7 @@ export default function Home() {
                 With years of experience in the furniture industry, we curate the finest collections from around the world to bring you unparalleled quality and design.
               </p>
               <motion.button
-                className="px-8 py-3 bg-amber-600 text-white font-semibold rounded-sm hover:bg-amber-700 transition-all"
+                className="px-8 py-3 bg-yellow-600 text-white font-semibold rounded-sm hover:bg-yellow-700 transition-all"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -142,7 +142,7 @@ export default function Home() {
             <h2 className="text-5xl font-bold mb-4" style={{ fontFamily: 'Playfair Display' }}>
               Get In Touch
             </h2>
-            <div className="w-24 h-1 bg-amber-600 mx-auto" />
+            <div className="w-24 h-1 bg-yellow-600 mx-auto" />
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -153,7 +153,7 @@ export default function Home() {
               viewport={{ once: true }}
               className="flex items-start gap-4"
             >
-              <Phone size={32} weight="bold" className="text-amber-600 flex-shrink-0 mt-2" />
+              <Phone size={32} weight="bold" className="text-yellow-600 flex-shrink-0 mt-2" />
               <div>
                 <h3 className="text-2xl font-bold mb-2" style={{ fontFamily: 'Playfair Display' }}>
                   Phone
@@ -169,7 +169,7 @@ export default function Home() {
               viewport={{ once: true }}
               className="flex items-start gap-4"
             >
-              <MapPin size={32} weight="bold" className="text-amber-600 flex-shrink-0 mt-2" />
+              <MapPin size={32} weight="bold" className="text-yellow-600 flex-shrink-0 mt-2" />
               <div>
                 <h3 className="text-2xl font-bold mb-2" style={{ fontFamily: 'Playfair Display' }}>
                   Location

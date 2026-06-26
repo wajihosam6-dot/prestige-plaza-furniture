@@ -48,7 +48,7 @@ export default function Header() {
             <motion.a
               key={item.label}
               href={item.href}
-              className="text-gray-700 font-medium text-sm hover:text-amber-600 transition-colors relative"
+              className="text-gray-700 font-medium text-sm hover:text-yellow-600 transition-colors relative"
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1, duration: 0.5 }}
@@ -56,7 +56,7 @@ export default function Header() {
             >
               {item.label}
               <motion.div
-                className="absolute bottom-0 left-0 h-0.5 bg-amber-600"
+                className="absolute bottom-0 left-0 h-0.5 bg-yellow-600"
                 initial={{ width: 0 }}
                 whileHover={{ width: '100%' }}
                 transition={{ duration: 0.3 }}
@@ -66,7 +66,7 @@ export default function Header() {
         </nav>
 
         <motion.button
-          className="hidden md:block px-6 py-2 bg-amber-600 text-white font-semibold rounded-sm hover:bg-amber-700 transition-all"
+          className="hidden md:block px-6 py-2 bg-yellow-600 text-white font-semibold rounded-sm hover:bg-yellow-700 transition-all"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
@@ -100,13 +100,13 @@ export default function Header() {
               <a
                 key={item.label}
                 href={item.href}
-                className="text-gray-700 font-medium hover:text-amber-600 transition-colors"
+                className="text-gray-700 font-medium hover:text-yellow-600 transition-colors"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {item.label}
               </a>
             ))}
-            <button className="w-full px-6 py-2 bg-amber-600 text-white font-semibold rounded-sm hover:bg-amber-700 transition-all">
+            <button className="w-full px-6 py-2 bg-yellow-600 text-white font-semibold rounded-sm hover:bg-yellow-700 transition-all">
               Contact Us
             </button>
           </div>

@@ -96,7 +96,7 @@ export default function DraggableCarousel() {
       {/* Background Decoration */}
       <div className="absolute inset-0 opacity-5">
         <motion.div
-          className="absolute bottom-0 right-1/4 w-96 h-96 bg-amber-600 rounded-full blur-3xl"
+          className="absolute bottom-0 right-1/4 w-96 h-96 bg-yellow-600 rounded-full blur-3xl"
           animate={{
             scale: [1, 1.2, 1],
           }}
@@ -120,7 +120,7 @@ export default function DraggableCarousel() {
             Featured Collections
           </h2>
           <p className="text-gray-600 text-lg">Drag to explore our premium collections</p>
-          <div className="w-24 h-1 bg-amber-600 mx-auto mt-4" />
+          <div className="w-24 h-1 bg-yellow-600 mx-auto mt-4" />
         </motion.div>
 
         {/* Carousel Container */}
@@ -180,7 +180,7 @@ export default function DraggableCarousel() {
                       transition={{ duration: 0.3 }}
                     >
                       <motion.button
-                        className="w-full px-4 py-2 bg-amber-600 text-white font-semibold rounded-sm hover:bg-amber-700 transition-all"
+                        className="w-full px-4 py-2 bg-yellow-600 text-white font-semibold rounded-sm hover:bg-yellow-700 transition-all"
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                       >

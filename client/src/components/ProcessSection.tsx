@@ -46,7 +46,7 @@ export default function ProcessSection() {
       {/* Background Decoration */}
       <div className="absolute inset-0 opacity-5">
         <motion.div
-          className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-96 h-96 bg-amber-600 rounded-full blur-3xl"
+          className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-96 h-96 bg-yellow-600 rounded-full blur-3xl"
           animate={{
             scale: [1, 1.2, 1],
             opacity: [0.3, 0.6, 0.3],
@@ -70,14 +70,14 @@ export default function ProcessSection() {
           >
             Our Process
           </h2>
-          <div className="w-24 h-1 bg-amber-600 mx-auto" />
+          <div className="w-24 h-1 bg-yellow-600 mx-auto" />
         </motion.div>
 
         {/* Steps */}
         <div className="relative">
           {/* Connecting Line */}
           <motion.div
-            className="hidden lg:block absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-amber-600 to-transparent"
+            className="hidden lg:block absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-yellow-600 to-transparent"
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
             transition={{ duration: 1 }}
@@ -101,7 +101,7 @@ export default function ProcessSection() {
                   whileHover={{ scale: 1.2 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <div className="w-16 h-16 bg-gradient-to-br from-amber-600 to-amber-700 rounded-full flex items-center justify-center border-4 border-white shadow-lg">
+                  <div className="w-16 h-16 bg-gradient-to-br from-yellow-600 to-yellow-700 rounded-full flex items-center justify-center border-4 border-white shadow-lg">
                     <span className="text-white font-bold text-xl">{step.number}</span>
                   </div>
                 </motion.div>
@@ -112,11 +112,11 @@ export default function ProcessSection() {
                     y: -10,
                     boxShadow: '0 20px 40px rgba(217, 119, 6, 0.15)',
                   }}
-                  className="bg-white p-8 rounded-lg shadow-lg hover:shadow-2xl transition-all pt-16 text-center border-t-4 border-amber-600"
+                  className="bg-white p-8 rounded-lg shadow-lg hover:shadow-2xl transition-all pt-16 text-center border-t-4 border-yellow-600"
                 >
                   {/* Icon */}
                   <motion.div
-                    className="inline-flex items-center justify-center w-16 h-16 bg-amber-100 rounded-full mb-4 text-amber-600"
+                    className="inline-flex items-center justify-center w-16 h-16 bg-yellow-100 rounded-full mb-4 text-yellow-600"
                     whileHover={{
                       rotate: 360,
                       scale: 1.1,

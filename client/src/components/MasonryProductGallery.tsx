@@ -76,7 +76,7 @@ export default function MasonryProductGallery() {
       {/* Background Decoration */}
       <div className="absolute inset-0 opacity-5">
         <motion.div
-          className="absolute top-0 left-1/4 w-96 h-96 bg-amber-600 rounded-full blur-3xl"
+          className="absolute top-0 left-1/4 w-96 h-96 bg-yellow-600 rounded-full blur-3xl"
           animate={{
             x: [0, 50, 0],
             y: [0, 30, 0],
@@ -100,7 +100,7 @@ export default function MasonryProductGallery() {
           >
             Masonry Gallery
           </h2>
-          <div className="w-24 h-1 bg-amber-600 mx-auto" />
+          <div className="w-24 h-1 bg-yellow-600 mx-auto" />
         </motion.div>
 
         {/* Masonry Grid */}
@@ -140,7 +140,7 @@ export default function MasonryProductGallery() {
                     initial={{ scale: 0 }}
                     animate={{ scale: selectedId === item.id ? 1 : 0 }}
                     transition={{ delay: 0.1 }}
-                    className="w-12 h-12 bg-amber-600 rounded-full flex items-center justify-center text-white"
+                    className="w-12 h-12 bg-yellow-600 rounded-full flex items-center justify-center text-white"
                   >
                     <Plus size={24} weight="bold" />
                   </motion.div>
@@ -162,9 +162,9 @@ export default function MasonryProductGallery() {
                     {item.title}
                   </h3>
                   <div className="flex justify-between items-center">
-                    <span className="text-amber-600 font-bold text-lg">{item.price}</span>
+                    <span className="text-yellow-600 font-bold text-lg">{item.price}</span>
                     <motion.button
-                      className="p-2 bg-white text-amber-600 rounded-full hover:bg-amber-600 hover:text-white transition-all"
+                      className="p-2 bg-white text-yellow-600 rounded-full hover:bg-yellow-600 hover:text-white transition-all"
                       whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.95 }}
                     >
@@ -176,7 +176,7 @@ export default function MasonryProductGallery() {
 
               {/* Border Animation */}
               <motion.div
-                className="absolute inset-0 border-2 border-amber-600 rounded-lg opacity-0 group-hover:opacity-100"
+                className="absolute inset-0 border-2 border-yellow-600 rounded-lg opacity-0 group-hover:opacity-100"
                 transition={{ duration: 0.3 }}
               />
             </motion.div>

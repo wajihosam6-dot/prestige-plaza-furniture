@@ -60,7 +60,7 @@ export default function FlipCardProducts() {
       {/* Background Decoration */}
       <div className="absolute inset-0 opacity-5">
         <motion.div
-          className="absolute top-0 left-1/4 w-96 h-96 bg-amber-600 rounded-full blur-3xl"
+          className="absolute top-0 left-1/4 w-96 h-96 bg-yellow-600 rounded-full blur-3xl"
           animate={{
             x: [0, 50, 0],
             y: [0, 30, 0],
@@ -85,7 +85,7 @@ export default function FlipCardProducts() {
             Flip & Discover
           </h2>
           <p className="text-gray-600 text-lg">Click on any card to flip and see details</p>
-          <div className="w-24 h-1 bg-amber-600 mx-auto mt-4" />
+          <div className="w-24 h-1 bg-yellow-600 mx-auto mt-4" />
         </motion.div>
 
         {/* Flip Cards Grid */}
@@ -129,13 +129,13 @@ export default function FlipCardProducts() {
                     >
                       {product.title}
                     </h3>
-                    <p className="text-amber-600 text-2xl font-bold">{product.price}</p>
+                    <p className="text-yellow-600 text-2xl font-bold">{product.price}</p>
                   </div>
                 </motion.div>
 
                 {/* Back Side */}
                 <motion.div
-                  className="absolute w-full h-full bg-gradient-to-br from-amber-600 to-amber-700 rounded-lg shadow-lg p-6 flex flex-col justify-between text-white"
+                  className="absolute w-full h-full bg-gradient-to-br from-yellow-600 to-yellow-700 rounded-lg shadow-lg p-6 flex flex-col justify-between text-white"
                   style={{
                     backfaceVisibility: 'hidden',
                     transform: 'rotateY(180deg)',
@@ -160,7 +160,7 @@ export default function FlipCardProducts() {
 
                   <div className="flex gap-3 pt-4 border-t border-white/20">
                     <motion.button
-                      className="flex-1 px-3 py-2 bg-white text-amber-600 rounded-sm font-semibold flex items-center justify-center gap-2 hover:bg-gray-100 transition-all"
+                      className="flex-1 px-3 py-2 bg-white text-yellow-600 rounded-sm font-semibold flex items-center justify-center gap-2 hover:bg-gray-100 transition-all"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                     >

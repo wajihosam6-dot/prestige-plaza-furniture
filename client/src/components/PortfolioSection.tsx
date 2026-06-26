@@ -56,7 +56,7 @@ export default function PortfolioSection() {
       {/* Background Decoration */}
       <div className="absolute inset-0 opacity-5">
         <motion.div
-          className="absolute top-0 right-0 w-96 h-96 bg-amber-600 rounded-full blur-3xl"
+          className="absolute top-0 right-0 w-96 h-96 bg-yellow-600 rounded-full blur-3xl"
           animate={{
             x: [0, 50, 0],
             y: [0, 30, 0],
@@ -80,7 +80,7 @@ export default function PortfolioSection() {
           >
             Our Portfolio
           </h2>
-          <div className="w-24 h-1 bg-amber-600 mx-auto" />
+          <div className="w-24 h-1 bg-yellow-600 mx-auto" />
         </motion.div>
 
         {/* Portfolio Grid */}
@@ -115,12 +115,12 @@ export default function PortfolioSection() {
                 >
                   {item.title}
                 </h3>
-                <p className="text-amber-600 text-sm font-semibold">{item.category}</p>
+                <p className="text-yellow-600 text-sm font-semibold">{item.category}</p>
               </motion.div>
 
               {/* Border Animation */}
               <motion.div
-                className="absolute inset-0 border-2 border-amber-600 rounded-lg opacity-0 group-hover:opacity-100"
+                className="absolute inset-0 border-2 border-yellow-600 rounded-lg opacity-0 group-hover:opacity-100"
                 transition={{ duration: 0.3 }}
               />
             </motion.div>

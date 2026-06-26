@@ -41,7 +41,7 @@ export default function FeaturesSection() {
       {/* Animated Background */}
       <div className="absolute inset-0 opacity-5">
         <motion.div
-          className="absolute top-0 right-0 w-96 h-96 bg-amber-600 rounded-full blur-3xl"
+          className="absolute top-0 right-0 w-96 h-96 bg-yellow-600 rounded-full blur-3xl"
           animate={{
             x: [0, 30, 0],
             y: [0, 20, 0],
@@ -65,7 +65,7 @@ export default function FeaturesSection() {
           >
             Why Choose Us
           </h2>
-          <div className="w-24 h-1 bg-amber-600 mx-auto" />
+          <div className="w-24 h-1 bg-yellow-600 mx-auto" />
         </motion.div>
 
         {/* Features Grid */}
@@ -85,7 +85,7 @@ export default function FeaturesSection() {
             >
               {/* Icon Container */}
               <motion.div
-                className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-amber-600 to-amber-700 rounded-full mb-6 text-white"
+                className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-yellow-600 to-yellow-700 rounded-full mb-6 text-white"
                 whileHover={{
                   rotate: 360,
                   scale: 1.1,

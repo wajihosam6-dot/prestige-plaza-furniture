@@ -77,7 +77,7 @@ export default function InteractiveProductGrid() {
       {/* Background Decoration */}
       <div className="absolute inset-0 opacity-5">
         <motion.div
-          className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-96 h-96 bg-amber-600 rounded-full blur-3xl"
+          className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-96 h-96 bg-yellow-600 rounded-full blur-3xl"
           animate={{
             scale: [1, 1.2, 1],
           }}
@@ -100,7 +100,7 @@ export default function InteractiveProductGrid() {
           >
             Featured Products
           </h2>
-          <div className="w-24 h-1 bg-amber-600 mx-auto" />
+          <div className="w-24 h-1 bg-yellow-600 mx-auto" />
         </motion.div>
 
         {/* Products Grid */}
@@ -144,7 +144,7 @@ export default function InteractiveProductGrid() {
                   >
                     <div className="flex justify-between items-start">
                       <motion.span
-                        className="px-3 py-1 bg-amber-600 text-white text-sm font-semibold rounded-full"
+                        className="px-3 py-1 bg-yellow-600 text-white text-sm font-semibold rounded-full"
                         initial={{ scale: 0 }}
                         animate={{ scale: hoveredId === product.id ? 1 : 0 }}
                         transition={{ delay: 0.1 }}
@@ -169,7 +169,7 @@ export default function InteractiveProductGrid() {
                     </div>
 
                     <motion.button
-                      className="w-full px-4 py-2 bg-amber-600 text-white font-semibold rounded-sm hover:bg-amber-700 flex items-center justify-center gap-2"
+                      className="w-full px-4 py-2 bg-yellow-600 text-white font-semibold rounded-sm hover:bg-yellow-700 flex items-center justify-center gap-2"
                       initial={{ y: 20, opacity: 0 }}
                       animate={{
                         y: hoveredId === product.id ? 0 : 20,
@@ -199,7 +199,7 @@ export default function InteractiveProductGrid() {
                     {[...Array(product.rating)].map((_, i) => (
                       <motion.span
                         key={i}
-                        className="text-amber-600 text-lg"
+                        className="text-yellow-600 text-lg"
                         initial={{ opacity: 0, scale: 0 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         transition={{ delay: i * 0.05 }}
@@ -212,7 +212,7 @@ export default function InteractiveProductGrid() {
 
                   {/* Price */}
                   <motion.div
-                    className="text-2xl font-bold text-amber-600"
+                    className="text-2xl font-bold text-yellow-600"
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     transition={{ delay: 0.2 }}

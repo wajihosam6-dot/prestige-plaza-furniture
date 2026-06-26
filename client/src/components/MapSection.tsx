@@ -84,7 +84,7 @@ export default function MapSection() {
           icon: {
             path: window.google.maps.SymbolPath.CIRCLE,
             scale: 12,
-            fillColor: '#d97706',
+            fillColor: '#ca8a04',
             fillOpacity: 1,
             strokeColor: '#ffffff',
             strokeWeight: 3,
@@ -95,7 +95,7 @@ export default function MapSection() {
         const infoWindow = new window.google.maps.InfoWindow({
           content: `
             <div style="padding: 12px; font-family: 'Playfair Display', serif;">
-              <h3 style="margin: 0 0 8px 0; color: #1f2937; font-size: 18px;">Prestige Plaza</h3>
+              <h3 style="margin: 0 0 8px 0; color: #374151; font-size: 18px;">Prestige Plaza</h3>
               <p style="margin: 0 0 6px 0; color: #6b7280; font-size: 14px;">
                 <strong>Address:</strong> HCC5+MR9, Bawshar St, Muscat, Oman
               </p>
@@ -135,25 +135,25 @@ export default function MapSection() {
       icon: MapPin,
       title: 'Location',
       content: 'HCC5+MR9, Bawshar St, Muscat, Oman',
-      color: 'text-amber-600',
+      color: 'text-yellow-600',
     },
     {
       icon: Phone,
       title: 'Phone',
       content: '+968 7725 7779',
-      color: 'text-amber-600',
+      color: 'text-yellow-600',
     },
     {
       icon: Clock,
       title: 'Hours',
       content: '9:00 AM - 9:00 PM (Daily)',
-      color: 'text-amber-600',
+      color: 'text-yellow-600',
     },
     {
       icon: EnvelopeOpen,
       title: 'Email',
       content: 'info@prestigeplaza.om',
-      color: 'text-amber-600',
+      color: 'text-yellow-600',
     },
   ];
 
@@ -162,7 +162,7 @@ export default function MapSection() {
       {/* Background Decoration */}
       <div className="absolute inset-0 opacity-5">
         <motion.div
-          className="absolute top-0 right-1/4 w-96 h-96 bg-amber-600 rounded-full blur-3xl"
+          className="absolute top-0 right-1/4 w-96 h-96 bg-yellow-600 rounded-full blur-3xl"
           animate={{
             x: [0, 50, 0],
             y: [0, 30, 0],
@@ -189,7 +189,7 @@ export default function MapSection() {
           <p className="text-gray-600 text-lg mb-4">
             Experience our luxury furniture collection in person
           </p>
-          <div className="w-24 h-1 bg-amber-600 mx-auto" />
+          <div className="w-24 h-1 bg-yellow-600 mx-auto" />
         </motion.div>
 
         {/* Map and Info Grid */}
@@ -257,7 +257,7 @@ export default function MapSection() {
               href="https://maps.app.goo.gl/Prjgb5z2F24gLqck7"
               target="_blank"
               rel="noopener noreferrer"
-              className="block w-full px-6 py-3 bg-gradient-to-r from-amber-600 to-amber-700 text-white font-semibold rounded-lg text-center hover:shadow-lg transition-all mt-6"
+              className="block w-full px-6 py-3 bg-gradient-to-r from-yellow-600 to-yellow-700 text-white font-semibold rounded-lg text-center hover:shadow-lg transition-all mt-6"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               initial={{ opacity: 0, y: 20 }}
@@ -281,7 +281,7 @@ export default function MapSection() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center">
               <h4
-                className="text-2xl font-bold mb-2 text-amber-600"
+                className="text-2xl font-bold mb-2 text-yellow-600"
                 style={{ fontFamily: 'Playfair Display' }}
               >
                 Expert Staff
@@ -292,7 +292,7 @@ export default function MapSection() {
             </div>
             <div className="text-center">
               <h4
-                className="text-2xl font-bold mb-2 text-amber-600"
+                className="text-2xl font-bold mb-2 text-yellow-600"
                 style={{ fontFamily: 'Playfair Display' }}
               >
                 Free Consultation
@@ -303,7 +303,7 @@ export default function MapSection() {
             </div>
             <div className="text-center">
               <h4
-                className="text-2xl font-bold mb-2 text-amber-600"
+                className="text-2xl font-bold mb-2 text-yellow-600"
                 style={{ fontFamily: 'Playfair Display' }}
               >
                 Delivery Service

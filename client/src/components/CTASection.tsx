@@ -5,8 +5,8 @@ export default function CTASection() {
     <section className="py-20 bg-gradient-to-r from-gray-800 to-gray-900 relative overflow-hidden">
       {/* Background Decoration */}
       <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-amber-600 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-amber-600 rounded-full blur-3xl" />
+        <div className="absolute top-0 right-0 w-96 h-96 bg-yellow-600 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-yellow-600 rounded-full blur-3xl" />
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
@@ -29,14 +29,14 @@ export default function CTASection() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <motion.button
-              className="px-8 py-4 bg-amber-600 text-white font-semibold rounded-sm hover:bg-amber-700 transition-all"
+              className="px-8 py-4 bg-yellow-600 text-white font-semibold rounded-sm hover:bg-yellow-700 transition-all"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
               Visit Showroom
             </motion.button>
             <motion.button
-              className="px-8 py-4 border-2 border-amber-600 text-amber-600 font-semibold rounded-sm hover:bg-amber-600 hover:text-white transition-all"
+              className="px-8 py-4 border-2 border-yellow-600 text-yellow-600 font-semibold rounded-sm hover:bg-yellow-600 hover:text-white transition-all"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -55,7 +55,7 @@ export default function CTASection() {
             <p className="text-gray-400 mb-4">Or reach us directly:</p>
             <a
               href="tel:+96877257779"
-              className="text-amber-600 text-2xl font-bold hover:text-amber-500 transition-colors"
+              className="text-yellow-600 text-2xl font-bold hover:text-yellow-500 transition-colors"
             >
               +968 7725 7779
             </a>

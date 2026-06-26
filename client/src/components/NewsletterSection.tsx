@@ -20,7 +20,7 @@ export default function NewsletterSection() {
       {/* Background Elements */}
       <div className="absolute inset-0 opacity-5">
         <motion.div
-          className="absolute top-0 right-0 w-96 h-96 bg-amber-600 rounded-full blur-3xl"
+          className="absolute top-0 right-0 w-96 h-96 bg-yellow-600 rounded-full blur-3xl"
           animate={{
             scale: [1, 1.2, 1],
           }}
@@ -62,15 +62,15 @@ export default function NewsletterSection() {
                 placeholder="Enter your email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="flex-1 px-6 py-4 bg-white border-2 border-gray-300 rounded-sm focus:border-amber-600 focus:outline-none transition-all text-gray-800 placeholder-gray-400"
+                className="flex-1 px-6 py-4 bg-white border-2 border-gray-300 rounded-sm focus:border-yellow-600 focus:outline-none transition-all text-gray-800 placeholder-gray-400"
                 whileFocus={{
-                  borderColor: '#d97706',
+                  borderColor: '#ca8a04',
                   boxShadow: '0 0 0 3px rgba(217, 119, 6, 0.1)',
                 }}
               />
               <motion.button
                 type="submit"
-                className="px-8 py-4 bg-amber-600 text-white font-semibold rounded-sm hover:bg-amber-700 transition-all flex items-center justify-center gap-2"
+                className="px-8 py-4 bg-yellow-600 text-white font-semibold rounded-sm hover:bg-yellow-700 transition-all flex items-center justify-center gap-2"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >

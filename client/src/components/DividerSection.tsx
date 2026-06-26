@@ -7,7 +7,7 @@ export default function DividerSection() {
         <div className="flex items-center justify-center gap-4">
           {/* Left Line */}
           <motion.div
-            className="flex-1 h-1 bg-gradient-to-r from-transparent to-amber-600"
+            className="flex-1 h-1 bg-gradient-to-r from-transparent to-yellow-600"
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
             transition={{ duration: 0.8 }}
@@ -22,14 +22,14 @@ export default function DividerSection() {
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <div className="w-3 h-3 bg-amber-600 rounded-full" />
-            <div className="w-2 h-2 bg-amber-600 rounded-full opacity-60" />
-            <div className="w-3 h-3 bg-amber-600 rounded-full" />
+            <div className="w-3 h-3 bg-yellow-600 rounded-full" />
+            <div className="w-2 h-2 bg-yellow-600 rounded-full opacity-60" />
+            <div className="w-3 h-3 bg-yellow-600 rounded-full" />
           </motion.div>
 
           {/* Right Line */}
           <motion.div
-            className="flex-1 h-1 bg-gradient-to-l from-transparent to-amber-600"
+            className="flex-1 h-1 bg-gradient-to-l from-transparent to-yellow-600"
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
             transition={{ duration: 0.8 }}

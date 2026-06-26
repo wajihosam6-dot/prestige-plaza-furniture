@@ -38,7 +38,7 @@ export default function HeroSection() {
 
       {/* Animated Background Elements */}
       <motion.div
-        className="absolute top-0 right-0 w-96 h-96 bg-amber-600 rounded-full blur-3xl opacity-20"
+        className="absolute top-0 right-0 w-96 h-96 bg-yellow-600 rounded-full blur-3xl opacity-20"
         animate={{
           x: [0, 50, 0],
           y: [0, 30, 0],
@@ -46,7 +46,7 @@ export default function HeroSection() {
         transition={{ duration: 8, repeat: Infinity }}
       />
       <motion.div
-        className="absolute bottom-0 left-0 w-96 h-96 bg-amber-600 rounded-full blur-3xl opacity-20"
+        className="absolute bottom-0 left-0 w-96 h-96 bg-yellow-600 rounded-full blur-3xl opacity-20"
         animate={{
           x: [0, -50, 0],
           y: [0, -30, 0],
@@ -99,7 +99,7 @@ export default function HeroSection() {
 
         {/* Decorative Line */}
         <motion.div
-          className="w-24 h-1 bg-amber-600 mx-auto mb-8"
+          className="w-24 h-1 bg-yellow-600 mx-auto mb-8"
           initial={{ width: 0 }}
           animate={{ width: 96 }}
           transition={{ duration: 1, delay: 0.8 }}
@@ -112,7 +112,7 @@ export default function HeroSection() {
           transition={{ duration: 0.8, delay: 1 }}
         >
           <motion.button
-            className="px-10 py-4 bg-amber-600 text-white font-semibold rounded-sm hover:bg-amber-700 transition-all text-lg shadow-2xl"
+            className="px-10 py-4 bg-yellow-600 text-white font-semibold rounded-sm hover:bg-yellow-700 transition-all text-lg shadow-2xl"
             whileHover={{ scale: 1.08, boxShadow: '0 20px 40px rgba(217, 119, 6, 0.4)' }}
             whileTap={{ scale: 0.95 }}
           >
@@ -129,13 +129,13 @@ export default function HeroSection() {
       >
         <div className="flex flex-col items-center gap-2">
           <span className="text-white text-sm font-light">Scroll to Explore</span>
-          <ArrowDown size={32} weight="bold" className="text-amber-600" />
+          <ArrowDown size={32} weight="bold" className="text-yellow-600" />
         </div>
       </motion.div>
 
       {/* Floating Elements */}
       <motion.div
-        className="absolute top-20 left-10 w-20 h-20 border-2 border-amber-600/30 rounded-lg"
+        className="absolute top-20 left-10 w-20 h-20 border-2 border-yellow-600/30 rounded-lg"
         animate={{
           rotate: [0, 360],
           opacity: [0.3, 0.6, 0.3],
@@ -143,7 +143,7 @@ export default function HeroSection() {
         transition={{ duration: 20, repeat: Infinity }}
       />
       <motion.div
-        className="absolute bottom-32 right-10 w-16 h-16 border-2 border-amber-600/30 rounded-full"
+        className="absolute bottom-32 right-10 w-16 h-16 border-2 border-yellow-600/30 rounded-full"
         animate={{
           scale: [1, 1.2, 1],
           opacity: [0.3, 0.6, 0.3],

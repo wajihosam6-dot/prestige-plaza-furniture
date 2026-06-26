@@ -40,7 +40,7 @@ export default function TeamSection() {
       {/* Background Decoration */}
       <div className="absolute inset-0 opacity-5">
         <motion.div
-          className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-96 h-96 bg-amber-600 rounded-full blur-3xl"
+          className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-96 h-96 bg-yellow-600 rounded-full blur-3xl"
           animate={{
             scale: [1, 1.2, 1],
           }}
@@ -63,7 +63,7 @@ export default function TeamSection() {
           >
             Meet Our Team
           </h2>
-          <div className="w-24 h-1 bg-amber-600 mx-auto" />
+          <div className="w-24 h-1 bg-yellow-600 mx-auto" />
         </motion.div>
 
         {/* Team Grid */}
@@ -79,11 +79,11 @@ export default function TeamSection() {
                 y: -10,
                 boxShadow: '0 20px 40px rgba(217, 119, 6, 0.15)',
               }}
-              className="bg-white p-8 rounded-lg shadow-lg hover:shadow-2xl transition-all border-t-4 border-amber-600"
+              className="bg-white p-8 rounded-lg shadow-lg hover:shadow-2xl transition-all border-t-4 border-yellow-600"
             >
               {/* Avatar */}
               <motion.div
-                className="w-20 h-20 bg-gradient-to-br from-amber-600 to-amber-700 rounded-full mx-auto mb-6 flex items-center justify-center text-white text-2xl font-bold"
+                className="w-20 h-20 bg-gradient-to-br from-yellow-600 to-yellow-700 rounded-full mx-auto mb-6 flex items-center justify-center text-white text-2xl font-bold"
                 whileHover={{
                   scale: 1.1,
                   rotate: 360,
@@ -102,7 +102,7 @@ export default function TeamSection() {
               </h3>
 
               {/* Role */}
-              <p className="text-amber-600 font-semibold text-center mb-4">{member.role}</p>
+              <p className="text-yellow-600 font-semibold text-center mb-4">{member.role}</p>
 
               {/* Bio */}
               <p className="text-gray-600 text-center text-sm leading-relaxed">{member.bio}</p>
@@ -119,7 +119,7 @@ export default function TeamSection() {
                   <motion.a
                     key={social}
                     href="#"
-                    className="text-gray-400 hover:text-amber-600 transition-colors"
+                    className="text-gray-400 hover:text-yellow-600 transition-colors"
                     whileHover={{ scale: 1.2 }}
                   >
                     {social.charAt(0)}

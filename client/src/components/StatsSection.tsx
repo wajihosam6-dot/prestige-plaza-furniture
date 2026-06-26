@@ -43,7 +43,7 @@ export default function StatsSection() {
       {/* Background Decoration */}
       <div className="absolute inset-0 opacity-10">
         <motion.div
-          className="absolute top-0 left-1/4 w-96 h-96 bg-amber-600 rounded-full blur-3xl"
+          className="absolute top-0 left-1/4 w-96 h-96 bg-yellow-600 rounded-full blur-3xl"
           animate={{
             x: [0, 50, 0],
             y: [0, 30, 0],
@@ -51,7 +51,7 @@ export default function StatsSection() {
           transition={{ duration: 10, repeat: Infinity }}
         />
         <motion.div
-          className="absolute bottom-0 right-1/4 w-96 h-96 bg-amber-600 rounded-full blur-3xl"
+          className="absolute bottom-0 right-1/4 w-96 h-96 bg-yellow-600 rounded-full blur-3xl"
           animate={{
             x: [0, -50, 0],
             y: [0, -30, 0],
@@ -76,7 +76,7 @@ export default function StatsSection() {
                 whileHover={{ scale: 1.1 }}
                 className="mb-4"
               >
-                <div className="text-6xl font-bold text-amber-600 mb-2">
+                <div className="text-6xl font-bold text-yellow-600 mb-2">
                   <AnimatedCounter value={stat.value} />
                   <span>{stat.suffix}</span>
                 </div>
@@ -92,7 +92,7 @@ export default function StatsSection() {
 
               {/* Decorative Line */}
               <motion.div
-                className="w-12 h-1 bg-gradient-to-r from-amber-600 to-transparent mx-auto mt-4"
+                className="w-12 h-1 bg-gradient-to-r from-yellow-600 to-transparent mx-auto mt-4"
                 initial={{ width: 0 }}
                 whileInView={{ width: 48 }}
                 transition={{ duration: 0.8, delay: index * 0.1 }}

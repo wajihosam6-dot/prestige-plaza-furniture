@@ -38,8 +38,8 @@ export default function TestimonialsSection() {
     <section className="py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 relative overflow-hidden">
       {/* Background Decoration */}
       <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-amber-600 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-amber-600 rounded-full blur-3xl" />
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-yellow-600 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-yellow-600 rounded-full blur-3xl" />
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
@@ -57,7 +57,7 @@ export default function TestimonialsSection() {
           >
             What Our Clients Say
           </h2>
-          <div className="w-24 h-1 bg-amber-600 mx-auto" />
+          <div className="w-24 h-1 bg-yellow-600 mx-auto" />
         </motion.div>
 
         {/* Testimonials Grid */}
@@ -73,7 +73,7 @@ export default function TestimonialsSection() {
                 y: -10,
                 boxShadow: '0 30px 60px rgba(217, 119, 6, 0.2)',
               }}
-              className="bg-gradient-to-br from-gray-800 to-gray-900 p-8 rounded-lg border border-amber-600/20 backdrop-blur-sm cursor-pointer"
+              className="bg-gradient-to-br from-gray-800 to-gray-900 p-8 rounded-lg border border-yellow-600/20 backdrop-blur-sm cursor-pointer"
             >
               {/* Stars */}
               <div className="flex gap-1 mb-4">
@@ -85,7 +85,7 @@ export default function TestimonialsSection() {
                     transition={{ delay: i * 0.1 }}
                     viewport={{ once: true }}
                   >
-                    <Star size={20} weight="fill" className="text-amber-600" />
+                    <Star size={20} weight="fill" className="text-yellow-600" />
                   </motion.div>
                 ))}
               </div>
@@ -96,9 +96,9 @@ export default function TestimonialsSection() {
               </p>
 
               {/* Author */}
-              <div className="border-t border-amber-600/20 pt-4">
+              <div className="border-t border-yellow-600/20 pt-4">
                 <h4 className="text-white font-bold text-lg">{testimonial.name}</h4>
-                <p className="text-amber-600 text-sm">{testimonial.role}</p>
+                <p className="text-yellow-600 text-sm">{testimonial.role}</p>
               </div>
             </motion.div>
           ))}

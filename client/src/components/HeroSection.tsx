@@ -115,7 +115,7 @@ export default function HeroSection() {
         {/* Main Title with Typewriter Effect */}
         <TypewriterText
           text="Prestige Plaza"
-          className="text-7xl md:text-8xl font-bold text-white mb-6 drop-shadow-lg inline-block"
+          className="text-4xl md:text-7xl lg:text-8xl font-bold text-white mb-6 drop-shadow-lg inline-block"
           delay={0.3}
           speed={0.1}
         />
@@ -126,7 +126,7 @@ export default function HeroSection() {
         <div className="h-12">
           <TypewriterText
             text="Discover Luxury Furniture for Your Home"
-            className="text-2xl md:text-3xl text-neutral-100 mb-8 font-light drop-shadow-md inline-block"
+            className="text-sm md:text-2xl lg:text-3xl text-neutral-100 mb-8 font-light drop-shadow-md inline-block"
             delay={1.8}
             speed={0.04}
           />

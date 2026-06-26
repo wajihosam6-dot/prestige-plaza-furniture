@@ -76,10 +76,10 @@ export default function FlipCardProducts() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-12 md:mb-16"
         >
           <h2
-            className="text-5xl font-bold text-neutral-800 mb-4"
+            className="text-3xl md:text-5xl font-bold text-neutral-800 mb-4"
             style={{ fontFamily: 'Playfair Display' }}
           >
             Flip & Discover
@@ -135,7 +135,7 @@ export default function FlipCardProducts() {
 
                 {/* Back Side */}
                 <motion.div
-                  className="absolute w-full h-full bg-gradient-to-br from-yellow-600 to-yellow-700 rounded-lg shadow-lg p-6 flex flex-col justify-between text-white"
+                  className="absolute w-full h-full bg-gradient-to-br from-yellow-600 to-yellow-700 rounded-lg shadow-lg p-4 md:p-6 flex flex-col justify-between text-white"
                   style={{
                     backfaceVisibility: 'hidden',
                     transform: 'rotateY(180deg)',

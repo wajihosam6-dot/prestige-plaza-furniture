@@ -1,6 +1,5 @@
 import { motion } from 'motion/react';
-import { useState } from 'react';
-import { CaretLeft, CaretRight } from '@phosphor-icons/react';
+import { useState, useRef } from 'react';
 
 interface Product {
   id: number;
@@ -50,13 +49,26 @@ const products: Product[] = [
 
 export default function ProductCarousel3D() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const touchX = useRef(0);
 
-  const handlePrev = () => {
+  const goNext = () => {
+    setActiveIndex((prev) => (prev === products.length - 1 ? 0 : prev + 1));
+  };
+
+  const goPrev = () => {
     setActiveIndex((prev) => (prev === 0 ? products.length - 1 : prev - 1));
   };
 
-  const handleNext = () => {
-    setActiveIndex((prev) => (prev === products.length - 1 ? 0 : prev + 1));
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    const diff = touchX.current - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) goNext();
+      else goPrev();
+    }
   };
 
   const getPosition = (index: number) => {
@@ -66,7 +78,10 @@ export default function ProductCarousel3D() {
   };
 
   return (
-    <section className="py-20 bg-gradient-to-b from-white to-neutral-50 relative overflow-hidden">
+    <section className="py-20 bg-gradient-to-b from-white to-neutral-50 relative overflow-hidden"
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+    >
       {/* Background Decoration */}
       <div className="absolute inset-0 opacity-5">
         <motion.div
@@ -86,10 +101,10 @@ export default function ProductCarousel3D() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-12 md:mb-16"
         >
           <h2
-            className="text-5xl font-bold text-neutral-800 mb-4"
+            className="text-3xl md:text-5xl font-bold text-neutral-800 mb-4"
             style={{ fontFamily: 'Playfair Display' }}
           >
             3D Product Showcase
@@ -98,7 +113,7 @@ export default function ProductCarousel3D() {
         </motion.div>
 
         {/* Carousel Container */}
-        <div className="relative h-96 flex items-center justify-center">
+        <div className="relative h-72 md:h-96 flex items-center justify-center">
           {/* Products */}
           {products.map((product, index) => {
             const position = getPosition(index);
@@ -117,14 +132,14 @@ export default function ProductCarousel3D() {
               opacity = 1;
               zIndex = 10;
             } else if (isLeft) {
-              xPos = -400;
+              xPos = -300;
               scale = 0.7;
-              opacity = 0.5;
+              opacity = 0.4;
               zIndex = 5;
             } else if (isRight) {
-              xPos = 400;
+              xPos = 300;
               scale = 0.7;
-              opacity = 0.5;
+              opacity = 0.4;
               zIndex = 5;
             } else {
               opacity = 0;
@@ -145,9 +160,9 @@ export default function ProductCarousel3D() {
               >
                 <motion.div
                   whileHover={{ scale: isActive ? 1.05 : 1 }}
-                  className="bg-white rounded-lg shadow-2xl overflow-hidden w-72 cursor-pointer"
+                  className="bg-white rounded-lg shadow-2xl overflow-hidden w-64 md:w-72 cursor-pointer"
                 >
-                  <div className="relative h-64 overflow-hidden">
+                  <div className="relative h-48 md:h-64 overflow-hidden">
                     <img
                       src={product.image}
                       alt={product.name}
@@ -161,22 +176,22 @@ export default function ProductCarousel3D() {
                     />
                   </div>
 
-                  <div className="p-6">
-                    <p className="text-yellow-600 text-sm font-semibold mb-2">
+                  <div className="p-4 md:p-6">
+                    <p className="text-yellow-600 text-xs md:text-sm font-semibold mb-2">
                       {product.category}
                     </p>
                     <h3
-                      className="text-2xl font-bold text-neutral-800 mb-3"
+                      className="text-lg md:text-2xl font-bold text-neutral-800 mb-3"
                       style={{ fontFamily: 'Playfair Display' }}
                     >
                       {product.name}
                     </h3>
                     <div className="flex justify-between items-center">
-                      <span className="text-2xl font-bold text-yellow-600">
+                      <span className="text-xl md:text-2xl font-bold text-yellow-600">
                         {product.price}
                       </span>
                       <motion.button
-                        className="px-4 py-2 bg-yellow-600 text-white rounded-sm hover:bg-yellow-700"
+                        className="px-3 md:px-4 py-1 md:py-2 bg-yellow-600 text-white rounded-sm hover:bg-yellow-700 text-sm md:text-base"
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                       >
@@ -188,26 +203,6 @@ export default function ProductCarousel3D() {
               </motion.div>
             );
           })}
-        </div>
-
-        {/* Navigation Buttons */}
-        <div className="flex justify-center gap-4 mt-12">
-          <motion.button
-            onClick={handlePrev}
-            className="p-4 bg-yellow-600 text-white rounded-full hover:bg-yellow-700 transition-all"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <CaretLeft size={24} weight="fill" />
-          </motion.button>
-          <motion.button
-            onClick={handleNext}
-            className="p-4 bg-yellow-600 text-white rounded-full hover:bg-yellow-700 transition-all"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <CaretRight size={24} weight="fill" />
-          </motion.button>
         </div>
 
         {/* Indicators */}

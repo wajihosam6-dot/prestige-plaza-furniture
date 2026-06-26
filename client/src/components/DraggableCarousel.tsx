@@ -111,10 +111,10 @@ export default function DraggableCarousel() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-12 md:mb-16"
         >
           <h2
-            className="text-5xl font-bold text-neutral-800 mb-4"
+            className="text-3xl md:text-5xl font-bold text-neutral-800 mb-4"
             style={{ fontFamily: 'Playfair Display' }}
           >
             Featured Collections
@@ -151,7 +151,7 @@ export default function DraggableCarousel() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.05 }}
                 viewport={{ once: true }}
-                className="flex-shrink-0 w-80 group"
+                className="flex-shrink-0 w-64 md:w-80 group"
                 draggable={false}
               >
                 <motion.div
@@ -159,7 +159,7 @@ export default function DraggableCarousel() {
                   className="bg-white rounded-lg shadow-lg overflow-hidden h-full hover:shadow-2xl transition-all"
                 >
                   {/* Image Container */}
-                  <div className="relative h-64 overflow-hidden bg-neutral-200">
+                  <div className="relative h-48 md:h-64 overflow-hidden bg-neutral-200">
                     <motion.img
                       src={product.image}
                       alt={product.title}

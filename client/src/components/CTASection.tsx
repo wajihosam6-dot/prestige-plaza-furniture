@@ -18,12 +18,12 @@ export default function CTASection() {
           className="text-center max-w-2xl mx-auto"
         >
           <h2
-            className="text-5xl font-bold text-white mb-6"
+            className="text-3xl md:text-5xl font-bold text-white mb-6"
             style={{ fontFamily: 'Playfair Display' }}
           >
             Ready to Transform Your Space?
           </h2>
-          <p className="text-neutral-300 text-lg mb-8">
+          <p className="text-neutral-300 text-sm md:text-lg mb-8">
             Visit our showroom or contact us today to explore our exclusive furniture collections and find the perfect pieces for your home.
           </p>
 

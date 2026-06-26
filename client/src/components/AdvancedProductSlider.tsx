@@ -1,6 +1,5 @@
 import { motion, AnimatePresence } from 'motion/react';
-import { useState, useEffect } from 'react';
-import { CaretLeft, CaretRight } from '@phosphor-icons/react';
+import { useState, useEffect, useRef } from 'react';
 
 interface SliderProduct {
   id: number;
@@ -49,6 +48,7 @@ const sliderProducts: SliderProduct[] = [
 export default function AdvancedProductSlider() {
   const [current, setCurrent] = useState(0);
   const [autoplay, setAutoplay] = useState(true);
+  const touchX = useRef(0);
 
   useEffect(() => {
     if (!autoplay) return;
@@ -58,14 +58,26 @@ export default function AdvancedProductSlider() {
     return () => clearInterval(timer);
   }, [autoplay]);
 
-  const handlePrev = () => {
+  const goNext = () => {
+    setCurrent((prev) => (prev + 1) % sliderProducts.length);
+    setAutoplay(false);
+  };
+
+  const goPrev = () => {
     setCurrent((prev) => (prev === 0 ? sliderProducts.length - 1 : prev - 1));
     setAutoplay(false);
   };
 
-  const handleNext = () => {
-    setCurrent((prev) => (prev + 1) % sliderProducts.length);
-    setAutoplay(false);
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    const diff = touchX.current - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) goNext();
+      else goPrev();
+    }
   };
 
   return (
@@ -89,10 +101,10 @@ export default function AdvancedProductSlider() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-12 md:mb-16"
         >
           <h2
-            className="text-5xl font-bold text-white mb-4"
+            className="text-3xl md:text-5xl font-bold text-white mb-4"
             style={{ fontFamily: 'Playfair Display' }}
           >
             Featured Collections
@@ -101,7 +113,11 @@ export default function AdvancedProductSlider() {
         </motion.div>
 
         {/* Slider */}
-        <div className="relative h-96 md:h-[500px] rounded-lg overflow-hidden">
+        <div
+          className="relative h-[350px] md:h-[500px] rounded-lg overflow-hidden"
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+        >
           <AnimatePresence mode="wait">
             <motion.div
               key={current}
@@ -132,24 +148,24 @@ export default function AdvancedProductSlider() {
                 className="max-w-lg text-white"
               >
                 <h3
-                  className="text-5xl font-bold mb-4"
+                  className="text-2xl md:text-5xl font-bold mb-2 md:mb-4"
                   style={{ fontFamily: 'Playfair Display' }}
                 >
                   {sliderProducts[current].title}
                 </h3>
-                <p className="text-lg text-neutral-200 mb-6">
+                <p className="text-sm md:text-lg text-neutral-200 mb-4 md:mb-6">
                   {sliderProducts[current].description}
                 </p>
 
                 {/* Features */}
-                <div className="flex gap-4 mb-8">
+                <div className="flex flex-wrap gap-2 md:gap-4 mb-4 md:mb-8">
                   {sliderProducts[current].features.map((feature, index) => (
                     <motion.span
                       key={index}
                       initial={{ opacity: 0, scale: 0.8 }}
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ delay: index * 0.1 }}
-                      className="px-4 py-2 bg-yellow-600 rounded-full text-sm font-semibold"
+                      className="px-3 md:px-4 py-1 md:py-2 bg-yellow-600 rounded-full text-xs md:text-sm font-semibold"
                     >
                       {feature}
                     </motion.span>
@@ -157,12 +173,12 @@ export default function AdvancedProductSlider() {
                 </div>
 
                 {/* Price and CTA */}
-                <div className="flex items-center gap-6">
-                  <span className="text-4xl font-bold text-yellow-600">
+                <div className="flex items-center gap-4 md:gap-6">
+                  <span className="text-2xl md:text-4xl font-bold text-yellow-600">
                     {sliderProducts[current].price}
                   </span>
                   <motion.button
-                    className="px-8 py-3 bg-yellow-600 text-white font-semibold rounded-sm hover:bg-yellow-700 transition-all"
+                    className="px-6 md:px-8 py-2 md:py-3 bg-yellow-600 text-white font-semibold rounded-sm hover:bg-yellow-700 transition-all text-sm md:text-base"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
@@ -173,28 +189,8 @@ export default function AdvancedProductSlider() {
             </div>
           </div>
 
-          {/* Navigation */}
-          <div className="absolute bottom-8 right-8 flex gap-4 z-10">
-            <motion.button
-              onClick={handlePrev}
-              className="p-3 bg-yellow-600 text-white rounded-full hover:bg-yellow-700 transition-all"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <CaretLeft size={24} weight="fill" />
-            </motion.button>
-            <motion.button
-              onClick={handleNext}
-              className="p-3 bg-yellow-600 text-white rounded-full hover:bg-yellow-700 transition-all"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <CaretRight size={24} weight="fill" />
-            </motion.button>
-          </div>
-
           {/* Indicators */}
-          <div className="absolute bottom-8 left-8 flex gap-2 z-10">
+          <div className="absolute bottom-4 md:bottom-8 left-1/2 -translate-x-1/2 flex gap-2 z-10">
             {sliderProducts.map((_, index) => (
               <motion.button
                 key={index}
@@ -203,7 +199,7 @@ export default function AdvancedProductSlider() {
                   setAutoplay(false);
                 }}
                 className={`h-2 rounded-full transition-all ${
-                  index === current ? 'bg-yellow-600 w-8' : 'bg-white/30 w-2'
+                  index === current ? 'bg-yellow-600 w-6 md:w-8' : 'bg-white/30 w-2'
                 }`}
                 whileHover={{ scale: 1.2 }}
               />

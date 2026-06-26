@@ -13,28 +13,28 @@ const steps: Step[] = [
   {
     id: 1,
     number: '01',
-    icon: <Eye size={40} weight="fill" />,
+    icon: <Eye size={28} className="md:!w-10 md:!h-10" weight="fill" />,
     title: 'Explore',
     description: 'Browse our extensive collection of premium furniture and find pieces that match your style.',
   },
   {
     id: 2,
     number: '02',
-    icon: <Pencil size={40} weight="fill" />,
+    icon: <Pencil size={28} className="md:!w-10 md:!h-10" weight="fill" />,
     title: 'Customize',
     description: 'Personalize your selections with colors, materials, and dimensions to fit your space perfectly.',
   },
   {
     id: 3,
     number: '03',
-    icon: <Truck size={40} weight="fill" />,
+    icon: <Truck size={28} className="md:!w-10 md:!h-10" weight="fill" />,
     title: 'Deliver',
     description: 'We handle professional delivery and installation with care and precision.',
   },
   {
     id: 4,
     number: '04',
-    icon: <CheckCircle size={40} weight="fill" />,
+    icon: <CheckCircle size={28} className="md:!w-10 md:!h-10" weight="fill" />,
     title: 'Enjoy',
     description: 'Relax and enjoy your beautifully furnished space with our lifetime support.',
   },
@@ -62,10 +62,10 @@ export default function ProcessSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-12 md:mb-16"
         >
           <h2
-            className="text-5xl font-bold text-neutral-800 mb-4"
+            className="text-3xl md:text-5xl font-bold text-neutral-800 mb-4"
             style={{ fontFamily: 'Playfair Display' }}
           >
             Our Process
@@ -112,7 +112,7 @@ export default function ProcessSection() {
                     y: -10,
                     boxShadow: '0 20px 40px rgba(217, 119, 6, 0.15)',
                   }}
-                  className="bg-white p-8 rounded-lg shadow-lg hover:shadow-2xl transition-all pt-16 text-center border-t-4 border-yellow-600"
+                  className="bg-white p-6 md:p-8 rounded-lg shadow-lg hover:shadow-2xl transition-all pt-16 text-center border-t-4 border-yellow-600"
                 >
                   {/* Icon */}
                   <motion.div

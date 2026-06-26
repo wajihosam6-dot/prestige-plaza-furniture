@@ -38,12 +38,12 @@ export default function NewsletterSection() {
         >
           {/* Header */}
           <h2
-            className="text-5xl font-bold text-neutral-800 mb-4"
+            className="text-3xl md:text-5xl font-bold text-neutral-800 mb-4"
             style={{ fontFamily: 'Playfair Display' }}
           >
             Stay Updated
           </h2>
-          <p className="text-neutral-600 text-lg mb-8">
+          <p className="text-neutral-600 text-sm md:text-lg mb-8">
             Subscribe to our newsletter to get the latest updates on new collections, exclusive offers, and design inspiration.
           </p>
 

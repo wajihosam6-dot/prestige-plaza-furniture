@@ -92,10 +92,10 @@ export default function InteractiveProductGrid() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-12 md:mb-16"
         >
           <h2
-            className="text-5xl font-bold text-neutral-800 mb-4"
+            className="text-3xl md:text-5xl font-bold text-neutral-800 mb-4"
             style={{ fontFamily: 'Playfair Display' }}
           >
             Featured Products
@@ -186,7 +186,7 @@ export default function InteractiveProductGrid() {
                 </div>
 
                 {/* Product Info */}
-                <div className="p-6">
+                <div className="p-4 md:p-6">
                   <h3
                     className="text-xl font-bold text-neutral-800 mb-2"
                     style={{ fontFamily: 'Playfair Display' }}

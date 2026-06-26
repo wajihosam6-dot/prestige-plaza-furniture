@@ -55,10 +55,10 @@ export default function TeamSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-12 md:mb-16"
         >
           <h2
-            className="text-5xl font-bold text-neutral-800 mb-4"
+            className="text-3xl md:text-5xl font-bold text-neutral-800 mb-4"
             style={{ fontFamily: 'Playfair Display' }}
           >
             Meet Our Team
@@ -79,7 +79,7 @@ export default function TeamSection() {
                 y: -10,
                 boxShadow: '0 20px 40px rgba(217, 119, 6, 0.15)',
               }}
-              className="bg-white p-8 rounded-lg shadow-lg hover:shadow-2xl transition-all border-t-4 border-yellow-600"
+              className="bg-white p-6 md:p-8 rounded-lg shadow-lg hover:shadow-2xl transition-all border-t-4 border-yellow-600"
             >
               {/* Avatar */}
               <motion.div

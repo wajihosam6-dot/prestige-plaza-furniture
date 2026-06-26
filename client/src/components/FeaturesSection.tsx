@@ -11,25 +11,25 @@ interface Feature {
 const features: Feature[] = [
   {
     id: 1,
-    icon: <Sparkle size={48} weight="fill" />,
+    icon: <Sparkle size={32} className="md:!w-12 md:!h-12" weight="fill" />,
     title: 'Premium Quality',
     description: 'Handpicked furniture crafted with the finest materials and attention to detail.',
   },
   {
     id: 2,
-    icon: <Leaf size={48} weight="fill" />,
+    icon: <Leaf size={32} className="md:!w-12 md:!h-12" weight="fill" />,
     title: 'Sustainable',
     description: 'Eco-friendly materials and sustainable manufacturing practices.',
   },
   {
     id: 3,
-    icon: <Shield size={48} weight="fill" />,
+    icon: <Shield size={32} className="md:!w-12 md:!h-12" weight="fill" />,
     title: 'Warranty',
     description: 'Comprehensive warranty and after-sales support for peace of mind.',
   },
   {
     id: 4,
-    icon: <Truck size={48} weight="fill" />,
+    icon: <Truck size={32} className="md:!w-12 md:!h-12" weight="fill" />,
     title: 'Fast Delivery',
     description: 'Quick and reliable delivery to your doorstep with professional handling.',
   },
@@ -57,10 +57,10 @@ export default function FeaturesSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-12 md:mb-16"
         >
           <h2
-            className="text-5xl font-bold text-neutral-800 mb-4"
+            className="text-3xl md:text-5xl font-bold text-neutral-800 mb-4"
             style={{ fontFamily: 'Playfair Display' }}
           >
             Why Choose Us
@@ -81,11 +81,11 @@ export default function FeaturesSection() {
                 y: -15,
                 boxShadow: '0 20px 40px rgba(217, 119, 6, 0.15)',
               }}
-              className="text-center p-8 rounded-lg bg-white shadow-lg hover:shadow-2xl transition-all"
+              className="text-center p-6 md:p-8 rounded-lg bg-white shadow-lg hover:shadow-2xl transition-all"
             >
               {/* Icon Container */}
               <motion.div
-                className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-yellow-600 to-yellow-700 rounded-full mb-6 text-white"
+                className="inline-flex items-center justify-center w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-yellow-600 to-yellow-700 rounded-full mb-6 text-white"
                 whileHover={{
                   rotate: 360,
                   scale: 1.1,

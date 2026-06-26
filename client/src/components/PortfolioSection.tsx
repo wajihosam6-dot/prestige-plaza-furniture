@@ -48,9 +48,6 @@ export default function PortfolioSection() {
     offset: ['start end', 'end start'],
   });
 
-  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0, 1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.8, 1, 0.8]);
-
   return (
     <section ref={containerRef} className="py-20 bg-white relative overflow-hidden">
       {/* Background Decoration */}
@@ -72,10 +69,10 @@ export default function PortfolioSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-12 md:mb-16"
         >
           <h2
-            className="text-5xl font-bold text-neutral-800 mb-4"
+            className="text-3xl md:text-5xl font-bold text-neutral-800 mb-4"
             style={{ fontFamily: 'Playfair Display' }}
           >
             Our Portfolio
@@ -84,7 +81,7 @@ export default function PortfolioSection() {
         </motion.div>
 
         {/* Portfolio Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 md:gap-6">
           {portfolioItems.map((item, index) => (
             <motion.div
               key={item.id}
@@ -92,8 +89,7 @@ export default function PortfolioSection() {
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: index * 0.08 }}
               viewport={{ once: true }}
-              style={index % 2 === 0 ? { opacity, scale } : {}}
-              className="group relative overflow-hidden rounded-lg h-64 cursor-pointer"
+              className="group relative overflow-hidden rounded-lg h-48 md:h-64 cursor-pointer"
             >
               {/* Image */}
               <img
@@ -104,18 +100,18 @@ export default function PortfolioSection() {
 
               {/* Overlay */}
               <motion.div
-                className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex flex-col justify-end p-6"
+                className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex flex-col justify-end p-4 md:p-6"
                 initial={{ opacity: 0 }}
                 whileHover={{ opacity: 1 }}
                 transition={{ duration: 0.3 }}
               >
                 <h3
-                  className="text-xl font-bold text-white mb-2"
+                  className="text-lg md:text-xl font-bold text-white mb-2"
                   style={{ fontFamily: 'Playfair Display' }}
                 >
                   {item.title}
                 </h3>
-                <p className="text-yellow-600 text-sm font-semibold">{item.category}</p>
+                <p className="text-yellow-600 text-xs md:text-sm font-semibold">{item.category}</p>
               </motion.div>
 
               {/* Border Animation */}

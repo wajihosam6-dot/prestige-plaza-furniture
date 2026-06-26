@@ -1,5 +1,5 @@
-import { motion } from 'motion/react';
-import { useRef, useState } from 'react';
+import { motion, useMotionValue } from 'motion/react';
+import { useRef } from 'react';
 
 interface CarouselProduct {
   id: number;
@@ -49,47 +49,11 @@ const products: CarouselProduct[] = [
 
 export default function DraggableCarousel() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [isDragging, setIsDragging] = useState(false);
-  const [dragStart, setDragStart] = useState(0);
-  const [dragOffset, setDragOffset] = useState(0);
+  const x = useMotionValue(0);
 
-  const handleMouseDown = (e: React.MouseEvent) => {
-    setIsDragging(true);
-    setDragStart(e.clientX);
-  };
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (!isDragging) return;
-    const diff = e.clientX - dragStart;
-    setDragOffset(diff);
-  };
-
-  const handleMouseUp = () => {
-    setIsDragging(false);
-    
-    // Snap to nearest item
-    const itemWidth = 320 + 32; // card width + gap
-    const snappedOffset = Math.round(dragOffset / itemWidth) * itemWidth;
-    setDragOffset(snappedOffset);
-  };
-
-  const handleTouchStart = (e: React.TouchEvent) => {
-    setIsDragging(true);
-    setDragStart(e.touches[0].clientX);
-  };
-
-  const handleTouchMove = (e: React.TouchEvent) => {
-    if (!isDragging) return;
-    const diff = e.touches[0].clientX - dragStart;
-    setDragOffset(diff);
-  };
-
-  const handleTouchEnd = () => {
-    setIsDragging(false);
-    const itemWidth = 320 + 32;
-    const snappedOffset = Math.round(dragOffset / itemWidth) * itemWidth;
-    setDragOffset(snappedOffset);
-  };
+  const totalWidth = products.length * (256 + 32);
+  const maxDrag = 0;
+  const minDrag = -(totalWidth - (containerRef.current?.offsetWidth ?? 400) + 32);
 
   return (
     <section className="py-20 bg-gradient-to-b from-white to-neutral-50 relative overflow-hidden">
@@ -119,30 +83,20 @@ export default function DraggableCarousel() {
           >
             Featured Collections
           </h2>
-          <p className="text-neutral-600 text-lg">Drag to explore our premium collections</p>
+          <p className="text-neutral-600 text-sm md:text-lg">Swipe or drag to explore our premium collections</p>
           <div className="w-24 h-1 bg-yellow-600 mx-auto mt-4" />
         </motion.div>
 
         {/* Carousel Container */}
-        <div
-          ref={containerRef}
-          className="overflow-hidden cursor-grab active:cursor-grabbing"
-          onMouseDown={handleMouseDown}
-          onMouseMove={handleMouseMove}
-          onMouseUp={handleMouseUp}
-          onMouseLeave={handleMouseUp}
-          onTouchStart={handleTouchStart}
-          onTouchMove={handleTouchMove}
-          onTouchEnd={handleTouchEnd}
-        >
+        <div ref={containerRef} className="overflow-hidden">
           <motion.div
-            className="flex gap-8"
-            animate={{ x: dragOffset }}
-            transition={
-              isDragging
-                ? { duration: 0 }
-                : { type: 'spring', stiffness: 300, damping: 30 }
-            }
+            className="flex gap-8 cursor-grab active:cursor-grabbing"
+            drag="x"
+            dragConstraints={containerRef}
+            dragElastic={0.2}
+            dragTransition={{ power: 0.3, timeConstant: 300 }}
+            style={{ x }}
+            whileTap={{ cursor: 'grabbing' }}
           >
             {products.map((product, index) => (
               <motion.div
@@ -151,22 +105,19 @@ export default function DraggableCarousel() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.05 }}
                 viewport={{ once: true }}
-                className="flex-shrink-0 w-64 md:w-80 group"
+                className="flex-shrink-0 w-64 md:w-80 group select-none"
                 draggable={false}
               >
                 <motion.div
                   whileHover={{ y: -10 }}
-                  className="bg-white rounded-lg shadow-lg overflow-hidden h-full hover:shadow-2xl transition-all"
+                  className="bg-white rounded-lg shadow-lg overflow-hidden h-full hover:shadow-2xl transition-shadow"
                 >
                   {/* Image Container */}
                   <div className="relative h-48 md:h-64 overflow-hidden bg-neutral-200">
                     <motion.img
                       src={product.image}
                       alt={product.title}
-                      className="w-full h-full object-cover"
-                      animate={{
-                        scale: isDragging ? 1 : 1,
-                      }}
+                      className="w-full h-full object-cover pointer-events-none"
                       whileHover={{ scale: 1.1 }}
                       transition={{ duration: 0.5 }}
                       draggable={false}
@@ -174,13 +125,13 @@ export default function DraggableCarousel() {
 
                     {/* Overlay */}
                     <motion.div
-                      className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex flex-col justify-end p-6"
+                      className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex flex-col justify-end p-4 md:p-6"
                       initial={{ opacity: 0 }}
                       whileHover={{ opacity: 1 }}
                       transition={{ duration: 0.3 }}
                     >
                       <motion.button
-                        className="w-full px-4 py-2 bg-yellow-600 text-white font-semibold rounded-sm hover:bg-yellow-700 transition-all"
+                        className="w-full px-4 py-2 bg-yellow-600 text-white font-semibold rounded-sm hover:bg-yellow-700 transition-all pointer-events-auto"
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                       >
@@ -190,9 +141,9 @@ export default function DraggableCarousel() {
                   </div>
 
                   {/* Content */}
-                  <div className="p-6">
+                  <div className="p-4 md:p-6 pointer-events-none">
                     <h3
-                      className="text-2xl font-bold text-neutral-800 mb-2"
+                      className="text-xl md:text-2xl font-bold text-neutral-800 mb-2"
                       style={{ fontFamily: 'Playfair Display' }}
                     >
                       {product.title}
@@ -211,7 +162,7 @@ export default function DraggableCarousel() {
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
         >
-          <p className="text-sm font-medium">← Drag to scroll →</p>
+          <p className="text-sm font-medium">← Swipe to scroll →</p>
         </motion.div>
       </div>
     </section>

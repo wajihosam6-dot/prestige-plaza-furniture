@@ -30,7 +30,7 @@ export default function Header() {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
     >
-      <div className="container mx-auto px-4 py-0.5 flex items-center justify-between">
+      <div className="container mx-auto px-4 py-0 flex items-center justify-between">
         <motion.div
           className="flex items-center gap-2"
           whileHover={{ scale: 1.05 }}
@@ -39,7 +39,7 @@ export default function Header() {
           <img
             src="/images/prestige_plaza_logo_real_0ced4f3f.png"
             alt="Prestige Plaza"
-            className="w-28 h-28 md:w-32 md:h-32 object-contain drop-shadow-lg"
+            className="w-20 h-20 md:w-24 md:h-24 object-contain drop-shadow-lg"
           />
         </motion.div>
 

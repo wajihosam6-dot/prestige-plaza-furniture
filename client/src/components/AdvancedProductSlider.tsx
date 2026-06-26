@@ -14,7 +14,7 @@ interface SliderProduct {
 const sliderProducts: SliderProduct[] = [
   {
     id: 1,
-    image: '/manus-storage/sofa_collection_hero_92dbb842.png',
+    image: '/images/sofa_collection_hero_92dbb842.png',
     title: 'Luxury Velvet Sofa',
     description: 'Experience ultimate comfort with our premium velvet sofa collection.',
     price: '$3,999',
@@ -22,7 +22,7 @@ const sliderProducts: SliderProduct[] = [
   },
   {
     id: 2,
-    image: '/manus-storage/interior_design_showcase_bcb31a16.png',
+    image: '/images/interior_design_showcase_bcb31a16.png',
     title: 'Modern Dining Collection',
     description: 'Elevate your dining experience with contemporary elegance.',
     price: '$2,499',
@@ -30,7 +30,7 @@ const sliderProducts: SliderProduct[] = [
   },
   {
     id: 3,
-    image: '/manus-storage/furniture_details_close_eef9ac45.png',
+    image: '/images/furniture_details_close_eef9ac45.png',
     title: 'Designer Armchair',
     description: 'Timeless elegance meets modern comfort in this statement piece.',
     price: '$1,599',
@@ -38,7 +38,7 @@ const sliderProducts: SliderProduct[] = [
   },
   {
     id: 4,
-    image: '/manus-storage/hero_furniture_showcase_eaa79e5a.png',
+    image: '/images/hero_furniture_showcase_eaa79e5a.png',
     title: 'Premium Bed Frame',
     description: 'Sleep in luxury with our handcrafted bed frame collection.',
     price: '$4,999',

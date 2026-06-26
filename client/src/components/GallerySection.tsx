@@ -11,31 +11,31 @@ interface GalleryImage {
 const galleryImages: GalleryImage[] = [
   {
     id: 1,
-    src: '/manus-storage/hero_furniture_showcase_eaa79e5a.png',
+    src: '/images/hero_furniture_showcase_eaa79e5a.png',
     title: 'Luxury Showcase',
     description: 'Premium furniture collection',
   },
   {
     id: 2,
-    src: '/manus-storage/sofa_collection_hero_92dbb842.png',
+    src: '/images/sofa_collection_hero_92dbb842.png',
     title: 'Sofa Collection',
     description: 'Elegant and comfortable seating',
   },
   {
     id: 3,
-    src: '/manus-storage/interior_design_showcase_bcb31a16.png',
+    src: '/images/interior_design_showcase_bcb31a16.png',
     title: 'Interior Design',
     description: 'Complete room solutions',
   },
   {
     id: 4,
-    src: '/manus-storage/furniture_details_close_eef9ac45.png',
+    src: '/images/furniture_details_close_eef9ac45.png',
     title: 'Fine Details',
     description: 'Craftsmanship and quality',
   },
   {
     id: 5,
-    src: '/manus-storage/showroom_ambiance_ea0897f1.png',
+    src: '/images/showroom_ambiance_ea0897f1.png',
     title: 'Showroom Ambiance',
     description: 'Experience luxury in person',
   },

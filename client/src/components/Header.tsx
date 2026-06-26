@@ -37,7 +37,7 @@ export default function Header() {
           transition={{ duration: 0.3 }}
         >
           <img
-            src="/manus-storage/prestige_plaza_logo_real_0ced4f3f.png"
+            src="/images/prestige_plaza_logo_real_0ced4f3f.png"
             alt="Prestige Plaza"
             className="w-12 h-12 object-contain"
           />

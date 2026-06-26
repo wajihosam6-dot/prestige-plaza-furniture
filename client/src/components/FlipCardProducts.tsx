@@ -14,7 +14,7 @@ interface FlipProduct {
 const flipProducts: FlipProduct[] = [
   {
     id: 1,
-    image: '/manus-storage/sofa_collection_hero_92dbb842.png',
+    image: '/images/sofa_collection_hero_92dbb842.png',
     title: 'Luxury Sofa',
     price: '$3,499',
     description: 'Premium velvet sofa with hand-stitched details',
@@ -22,7 +22,7 @@ const flipProducts: FlipProduct[] = [
   },
   {
     id: 2,
-    image: '/manus-storage/interior_design_showcase_bcb31a16.png',
+    image: '/images/interior_design_showcase_bcb31a16.png',
     title: 'Dining Table',
     price: '$2,299',
     description: 'Marble top dining table for 8 people',
@@ -30,7 +30,7 @@ const flipProducts: FlipProduct[] = [
   },
   {
     id: 3,
-    image: '/manus-storage/furniture_details_close_eef9ac45.png',
+    image: '/images/furniture_details_close_eef9ac45.png',
     title: 'Armchair',
     price: '$1,299',
     description: 'Italian leather armchair with swivel base',
@@ -38,7 +38,7 @@ const flipProducts: FlipProduct[] = [
   },
   {
     id: 4,
-    image: '/manus-storage/hero_furniture_showcase_eaa79e5a.png',
+    image: '/images/hero_furniture_showcase_eaa79e5a.png',
     title: 'Bed Frame',
     price: '$3,999',
     description: 'Solid oak bed frame with storage',

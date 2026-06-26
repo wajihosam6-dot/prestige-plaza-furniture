@@ -87,7 +87,7 @@ export default function Home() {
               viewport={{ once: true }}
             >
               <img
-                src="/manus-storage/showroom_ambiance_ea0897f1.png"
+                src="/images/showroom_ambiance_ea0897f1.png"
                 alt="Showroom"
                 className="rounded-lg shadow-2xl"
               />

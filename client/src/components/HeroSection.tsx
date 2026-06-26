@@ -26,7 +26,7 @@ export default function HeroSection() {
         <div
           className="absolute inset-0"
           style={{
-            backgroundImage: 'url(/manus-storage/hero_furniture_showcase_eaa79e5a.png)',
+            backgroundImage: 'url(/images/hero_furniture_showcase_eaa79e5a.png)',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             backgroundAttachment: 'fixed',
@@ -67,7 +67,7 @@ export default function HeroSection() {
           className="mb-8"
         >
           <img
-            src="/manus-storage/prestige_plaza_logo_real_0ced4f3f.png"
+            src="/images/prestige_plaza_logo_real_0ced4f3f.png"
             alt="Prestige Plaza"
             className="w-32 h-32 mx-auto object-contain"
           />

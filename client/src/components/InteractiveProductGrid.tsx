@@ -15,7 +15,7 @@ const gridProducts: GridProduct[] = [
   {
     id: 1,
     name: 'Velvet Sofa',
-    image: '/manus-storage/sofa_collection_hero_92dbb842.png',
+    image: '/images/sofa_collection_hero_92dbb842.png',
     price: '$2,999',
     rating: 5,
     category: 'Sofas',
@@ -23,7 +23,7 @@ const gridProducts: GridProduct[] = [
   {
     id: 2,
     name: 'Marble Table',
-    image: '/manus-storage/interior_design_showcase_bcb31a16.png',
+    image: '/images/interior_design_showcase_bcb31a16.png',
     price: '$1,599',
     rating: 5,
     category: 'Tables',
@@ -31,7 +31,7 @@ const gridProducts: GridProduct[] = [
   {
     id: 3,
     name: 'Leather Chair',
-    image: '/manus-storage/furniture_details_close_eef9ac45.png',
+    image: '/images/furniture_details_close_eef9ac45.png',
     price: '$899',
     rating: 4,
     category: 'Chairs',
@@ -39,7 +39,7 @@ const gridProducts: GridProduct[] = [
   {
     id: 4,
     name: 'Designer Bed',
-    image: '/manus-storage/hero_furniture_showcase_eaa79e5a.png',
+    image: '/images/hero_furniture_showcase_eaa79e5a.png',
     price: '$3,499',
     rating: 5,
     category: 'Beds',
@@ -47,7 +47,7 @@ const gridProducts: GridProduct[] = [
   {
     id: 5,
     name: 'Glass Cabinet',
-    image: '/manus-storage/showroom_ambiance_ea0897f1.png',
+    image: '/images/showroom_ambiance_ea0897f1.png',
     price: '$1,299',
     rating: 4,
     category: 'Storage',
@@ -55,7 +55,7 @@ const gridProducts: GridProduct[] = [
   {
     id: 6,
     name: 'Ottoman Bench',
-    image: '/manus-storage/sofa_collection_hero_92dbb842.png',
+    image: '/images/sofa_collection_hero_92dbb842.png',
     price: '$599',
     rating: 5,
     category: 'Seating',

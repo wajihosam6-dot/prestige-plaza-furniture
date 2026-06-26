@@ -11,31 +11,31 @@ interface Portfolio {
 const portfolioItems: Portfolio[] = [
   {
     id: 1,
-    image: '/manus-storage/hero_furniture_showcase_eaa79e5a.png',
+    image: '/images/hero_furniture_showcase_eaa79e5a.png',
     title: 'Modern Living Room',
     category: 'Residential',
   },
   {
     id: 2,
-    image: '/manus-storage/sofa_collection_hero_92dbb842.png',
+    image: '/images/sofa_collection_hero_92dbb842.png',
     title: 'Luxury Seating',
     category: 'Collections',
   },
   {
     id: 3,
-    image: '/manus-storage/interior_design_showcase_bcb31a16.png',
+    image: '/images/interior_design_showcase_bcb31a16.png',
     title: 'Complete Interior',
     category: 'Design',
   },
   {
     id: 4,
-    image: '/manus-storage/furniture_details_close_eef9ac45.png',
+    image: '/images/furniture_details_close_eef9ac45.png',
     title: 'Premium Details',
     category: 'Craftsmanship',
   },
   {
     id: 5,
-    image: '/manus-storage/showroom_ambiance_ea0897f1.png',
+    image: '/images/showroom_ambiance_ea0897f1.png',
     title: 'Showroom Display',
     category: 'Exhibition',
   },

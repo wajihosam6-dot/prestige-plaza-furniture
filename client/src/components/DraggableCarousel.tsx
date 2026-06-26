@@ -12,37 +12,37 @@ const products: CarouselProduct[] = [
   {
     id: 1,
     title: 'Sofas',
-    image: '/manus-storage/sofa_collection_hero_92dbb842.png',
+    image: '/images/sofa_collection_hero_92dbb842.png',
     description: 'Premium velvet and leather sofas',
   },
   {
     id: 2,
     title: 'Interior Design',
-    image: '/manus-storage/interior_design_showcase_bcb31a16.png',
+    image: '/images/interior_design_showcase_bcb31a16.png',
     description: 'Complete interior solutions',
   },
   {
     id: 3,
     title: 'Details',
-    image: '/manus-storage/furniture_details_close_eef9ac45.png',
+    image: '/images/furniture_details_close_eef9ac45.png',
     description: 'Luxury accent pieces',
   },
   {
     id: 4,
     title: 'Bedroom Collection',
-    image: '/manus-storage/hero_furniture_showcase_eaa79e5a.png',
+    image: '/images/hero_furniture_showcase_eaa79e5a.png',
     description: 'Elegant bedroom furniture',
   },
   {
     id: 5,
     title: 'Living Room',
-    image: '/manus-storage/showroom_ambiance_ea0897f1.png',
+    image: '/images/showroom_ambiance_ea0897f1.png',
     description: 'Complete living room sets',
   },
   {
     id: 6,
     title: 'Dining Sets',
-    image: '/manus-storage/sofa_collection_hero_92dbb842.png',
+    image: '/images/sofa_collection_hero_92dbb842.png',
     description: 'Sophisticated dining furniture',
   },
 ];

@@ -1,5 +1,5 @@
-import { motion, useScroll, useInView } from 'motion/react';
-import { useRef, useState, useEffect } from 'react';
+import { motion, useScroll, useMotionValueEvent } from 'motion/react';
+import { useRef, useState } from 'react';
 
 interface Portfolio {
   id: number;
@@ -41,127 +41,105 @@ const portfolioItems: Portfolio[] = [
   },
 ];
 
-function Card({ item, index, isActive, onInView }: { item: Portfolio; index: number; isActive: boolean; onInView: (i: number) => void }) {
-  const cardRef = useRef(null);
-  const inView = useInView(cardRef, { amount: 0.4 });
-
-  useEffect(() => {
-    if (inView && window.innerWidth < 1024) onInView(index);
-  }, [inView, index, onInView]);
-
-  return (
-    <motion.div
-      ref={cardRef}
-      initial={{ opacity: 0, scale: 0.8 }}
-      whileInView={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.6, delay: index * 0.08 }}
-      viewport={{ once: true }}
-      animate={{
-        opacity: isActive ? 1 : 0.25,
-        scale: isActive ? 1 : 0.92,
-        filter: isActive ? 'blur(0px)' : 'blur(4px)',
-      }}
-      transition={{ duration: 0.6, ease: 'easeInOut' }}
-      className="group relative overflow-hidden rounded-lg h-48 md:h-64 cursor-pointer"
-    >
-      <img
-        src={item.image}
-        alt={item.title}
-        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-      />
-      <motion.div
-        className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex flex-col justify-end p-4 md:p-6"
-        initial={{ opacity: 0 }}
-        whileHover={{ opacity: 1 }}
-        transition={{ duration: 0.3 }}
-      >
-        <h3
-          className="text-lg md:text-xl font-bold text-white mb-2"
-          style={{ fontFamily: 'Playfair Display' }}
-        >
-          {item.title}
-        </h3>
-        <p className="text-yellow-600 text-xs md:text-sm font-semibold">{item.category}</p>
-      </motion.div>
-      <motion.div
-        className="absolute inset-0 border-2 border-yellow-600 rounded-lg opacity-0 group-hover:opacity-100"
-        transition={{ duration: 0.3 }}
-      />
-    </motion.div>
-  );
-}
-
 export default function PortfolioSection() {
-  const containerRef = useRef(null);
-  const [mobileFocus, setMobileFocus] = useState(0);
-  const [desktopFocus, setDesktopFocus] = useState(0);
-  const scrollRef = useRef(0);
+  const sectionRef = useRef<HTMLElement>(null);
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [desktopPhase, setDesktopPhase] = useState(0);
+  const [mobileActive, setMobileActive] = useState(0);
 
   const { scrollYProgress } = useScroll({
-    target: containerRef,
+    target: sectionRef,
     offset: ['start end', 'end start'],
   });
 
-  useEffect(() => {
-    return scrollYProgress.on('change', (latest) => {
-      scrollRef.current = latest;
-      let phase = 0;
-      if (latest < 0.22) phase = 0;
-      else if (latest < 0.5) phase = 1;
-      else phase = 2;
-      setDesktopFocus(phase);
+  useMotionValueEvent(scrollYProgress, 'change', (latest) => {
+    if (typeof window === 'undefined' || window.innerWidth < 1024) return;
+    if (latest < 0.35) setDesktopPhase(0);
+    else if (latest < 0.65) setDesktopPhase(1);
+    else setDesktopPhase(2);
+  });
+
+  const { scrollY } = useScroll();
+
+  useMotionValueEvent(scrollY, 'change', () => {
+    if (typeof window === 'undefined' || window.innerWidth >= 1024) return;
+    const center = window.innerHeight / 2;
+    let closestIdx = 0;
+    let minDist = Infinity;
+    cardRefs.current.forEach((ref, i) => {
+      if (!ref) return;
+      const rect = ref.getBoundingClientRect();
+      const cardCenter = rect.top + rect.height / 2;
+      const dist = Math.abs(cardCenter - center);
+      if (dist < minDist) {
+        minDist = dist;
+        closestIdx = i;
+      }
     });
-  }, [scrollYProgress]);
+    setMobileActive(closestIdx);
+  });
 
   const isActive = (index: number) => {
-    if (window.innerWidth >= 1024) {
-      if (desktopFocus === 0) return index < 2;
-      if (desktopFocus === 1) return index >= 2 && index < 4;
+    const desktop = typeof window !== 'undefined' && window.innerWidth >= 1024;
+    if (desktop) {
+      if (desktopPhase === 0) return index < 2;
+      if (desktopPhase === 1) return index >= 2 && index < 4;
       return index >= 4;
     }
-    return mobileFocus === index;
+    return mobileActive === index;
   };
 
   return (
-    <section ref={containerRef} className="py-20 bg-white relative overflow-hidden">
-      <div className="absolute inset-0 opacity-5">
-        <motion.div
-          className="absolute top-0 right-0 w-96 h-96 bg-yellow-600 rounded-full blur-3xl"
-          animate={{
-            x: [0, 50, 0],
-            y: [0, 30, 0],
-          }}
-          transition={{ duration: 12, repeat: Infinity }}
-        />
-      </div>
-
-      <div className="container mx-auto px-4 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-center mb-12 md:mb-16"
-        >
-          <h2
-            className="text-3xl md:text-5xl font-bold text-neutral-800 mb-4"
-            style={{ fontFamily: 'Playfair Display' }}
+    <section ref={sectionRef} className="relative bg-white min-h-screen lg:min-h-[300vh]">
+      <div className="relative z-10 py-20 lg:py-0 lg:sticky lg:top-0 lg:h-screen lg:flex lg:items-center lg:overflow-hidden">
+        <div className="container mx-auto px-4 w-full">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center mb-12 md:mb-16"
           >
-            Our Portfolio
-          </h2>
-          <div className="w-24 h-1 bg-yellow-600 mx-auto" />
-        </motion.div>
+            <h2
+              className="text-3xl md:text-5xl font-bold text-neutral-800 mb-4"
+              style={{ fontFamily: 'Playfair Display' }}
+            >
+              Our Portfolio
+            </h2>
+            <div className="w-24 h-1 bg-yellow-600 mx-auto" />
+          </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 md:gap-6">
-          {portfolioItems.map((item, index) => (
-            <Card
-              key={item.id}
-              item={item}
-              index={index}
-              isActive={isActive(index)}
-              onInView={setMobileFocus}
-            />
-          ))}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 md:gap-6">
+            {portfolioItems.map((item, index) => (
+              <motion.div
+                key={item.id}
+                ref={(el) => { cardRefs.current[index] = el; }}
+                animate={{
+                  opacity: isActive(index) ? 1 : 0.25,
+                  scale: isActive(index) ? 1 : 0.92,
+                  filter: isActive(index) ? 'blur(0px)' : 'blur(4px)',
+                }}
+                transition={{ duration: 0.6, ease: 'easeInOut' }}
+                className="group relative overflow-hidden rounded-lg h-48 md:h-64 cursor-pointer"
+              >
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex flex-col justify-end p-4 md:p-6">
+                  <h3
+                    className="text-lg md:text-xl font-bold text-white mb-2"
+                    style={{ fontFamily: 'Playfair Display' }}
+                  >
+                    {item.title}
+                  </h3>
+                  <p className="text-yellow-600 text-xs md:text-sm font-semibold">{item.category}</p>
+                </div>
+                <div className="absolute inset-0 border-2 border-yellow-600 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

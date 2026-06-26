@@ -1,12 +1,41 @@
 import { motion, useScroll, useTransform } from 'motion/react';
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { ArrowDown } from '@phosphor-icons/react';
+
+function TypewriterText({ text, className, delay = 0, speed = 0.06 }: { text: string; className?: string; delay?: number; speed?: number }) {
+  const [displayed, setDisplayed] = useState(0);
+  const [started, setStarted] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setStarted(true), delay * 1000);
+    return () => clearTimeout(timer);
+  }, [delay]);
+
+  useEffect(() => {
+    if (!started) return;
+    if (displayed >= text.length) return;
+    const timer = setTimeout(() => setDisplayed(displayed + 1), speed * 1000);
+    return () => clearTimeout(timer);
+  }, [started, displayed, text.length, speed]);
+
+  return (
+    <span className={className}>
+      {text.slice(0, displayed)}
+      {displayed < text.length && (
+        <motion.span
+          className="inline-block w-[1px] h-[0.8em] bg-yellow-600 ml-1 align-middle"
+          animate={{ opacity: [1, 0] }}
+          transition={{ duration: 0.6, repeat: Infinity, repeatType: 'reverse' }}
+        />
+      )}
+    </span>
+  );
+}
 
 export default function HeroSection() {
   const containerRef = useRef(null);
   const { scrollY } = useScroll();
 
-  // Parallax effects
   const y = useTransform(scrollY, [0, 500], [0, 200]);
   const opacity = useTransform(scrollY, [0, 300], [1, 0]);
   const scale = useTransform(scrollY, [0, 300], [1, 0.8]);
@@ -32,7 +61,9 @@ export default function HeroSection() {
             backgroundAttachment: 'fixed',
           }}
         >
-          <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/50" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/50" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-black/20" />
+          <div className="absolute inset-0" style={{ boxShadow: 'inset 0 0 150px rgba(0,0,0,0.5)' }} />
         </div>
       </motion.div>
 
@@ -59,57 +90,39 @@ export default function HeroSection() {
         className="relative z-10 container mx-auto px-4 text-center"
         style={{ y: textY }}
       >
-        {/* Logo Animation */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="mb-8"
-        >
-          <img
-            src="/images/prestige_plaza_logo_real_0ced4f3f.png"
-            alt="Prestige Plaza"
-            className="w-32 h-32 mx-auto object-contain"
+        {/* Main Title with Typewriter Effect */}
+        <TypewriterText
+          text="Prestige Plaza"
+          className="text-7xl md:text-8xl font-bold text-white mb-6 drop-shadow-lg inline-block"
+          delay={0.3}
+          speed={0.1}
+        />
+
+        <br />
+
+        {/* Subtitle with Typewriter Effect */}
+        <div className="h-12">
+          <TypewriterText
+            text="Discover Luxury Furniture for Your Home"
+            className="text-2xl md:text-3xl text-neutral-100 mb-8 font-light drop-shadow-md inline-block"
+            delay={1.8}
+            speed={0.04}
           />
-        </motion.div>
-
-        {/* Main Title with Stagger Animation */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-        >
-          <h1
-            className="text-7xl md:text-8xl font-bold text-white mb-6 drop-shadow-lg"
-            style={{ fontFamily: 'Playfair Display' }}
-          >
-            Prestige Plaza
-          </h1>
-        </motion.div>
-
-        {/* Subtitle */}
-        <motion.p
-          className="text-2xl md:text-3xl text-neutral-100 mb-8 font-light drop-shadow-md"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-        >
-          Discover Luxury Furniture for Your Home
-        </motion.p>
+        </div>
 
         {/* Decorative Line */}
         <motion.div
-          className="w-24 h-1 bg-yellow-600 mx-auto mb-8"
+          className="w-24 h-1 bg-yellow-600 mx-auto mb-8 mt-8"
           initial={{ width: 0 }}
           animate={{ width: 96 }}
-          transition={{ duration: 1, delay: 0.8 }}
+          transition={{ duration: 0.8, delay: 3.2 }}
         />
 
         {/* CTA Button */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1 }}
+          transition={{ duration: 0.8, delay: 3.5 }}
         >
           <motion.button
             className="px-10 py-4 bg-yellow-600 text-white font-semibold rounded-sm hover:bg-yellow-700 transition-all text-lg shadow-2xl"
